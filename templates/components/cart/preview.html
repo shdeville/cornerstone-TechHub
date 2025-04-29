@@ -1,17 +1,21 @@
 <div class="modal-header">
     <h1 id="modal-header-title" class="modal-header-title">
+        {{#if customer}}
+            {{#if customer.customer_group_id '==' 10}}
+                {{lang 'cart.added_to_cart.quote_what_next' num_products=cart.quantity}}
+            {{else}}
         {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
+            {{/if}}
+        {{else}}
+            {{lang 'cart.added_to_cart.quote_what_next' num_products=cart.quantity}}
+        {{/if}}
     </h1>
 </div>
 
 <div class="modal-body">
     <div class="previewCart">
         <section class="previewCartCheckout">
-            {{#if cart.show_primary_checkout_button}}
-                <a href="{{urls.checkout.single_address}}" class="button button--primary" data-primary-checkout-now-action>
-                    {{lang 'cart.added_to_cart.proceed_to_checkout'}}
-                </a>
-            {{/if}}
+
 
             <div class="previewCartCheckout-additionalCheckoutButtons">
                 {{#each cart.additional_checkout_buttons}}
@@ -48,7 +52,15 @@
             </a>
 
             <a href="{{urls.cart}}" class="button">
+                {{#if customer}}
+                    {{#if customer.customer_group_id '==' 10}}
+                        {{lang 'cart.added_to_cart.view_or_edit_quote'}}
+                    {{else}}
                 {{lang 'cart.added_to_cart.view_or_edit_cart'}}
+                    {{/if}}
+                {{else}}
+                    {{lang 'cart.added_to_cart.view_or_edit_quote'}}
+                {{/if}}
             </a>
         </section>
         <section class="productView">

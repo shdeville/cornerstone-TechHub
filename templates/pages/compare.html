@@ -1,7 +1,40 @@
 {{#partial "page"}}
+<style>
+.price-section {
+    text-align: center;
+}
+
+.back-button {
+    position: absolute;
+    top: 5px; /* Adjust this value to move the button lower */
+    right: 20px; /* Adjust this value to move the button more to the right */
+    padding: 10px 15px;
+    background-color: #500000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    margin: 5px 0; /* Adds margin above and below the button */
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+</style>
+
+
+
+
+
 {{inject 'comparisons' comparisons}}
 {{inject 'compareRemoveMessage' (lang 'compare.no_remove')}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+
+<button class="back-button" onclick="window.history.back()">BACK</button>
+
 <h1 class="page-heading">{{lang 'compare.header' products=comparisons.length}}</h1>
 <main class="page">
     <div class="page-content">
@@ -37,6 +70,8 @@
                             <h3 class="card-title">
                                 <a href="{{url}}">{{ name }}</a>
                             </h3>
+                            <!-- Wrap the price section to center it -->
+                            <div class="price-section">
                             {{#or ../customer (unless ../settings.hide_price_from_guests)}}
                                 {{#if price_range}}
                                     {{> components/products/price-range}}
@@ -46,6 +81,7 @@
                             {{else}}
                                 {{> components/common/login-for-pricing}}
                             {{/or}}
+                        </div>
                         </div>
                     </article>
                 </th>
@@ -100,20 +136,7 @@
                     {{/each}}
                 </tr>
             {{/if}}
-            <tr class="compareTable-row">
-                <th class="compareTable-heading">
-                    <span class="compareTable-headingText">{{lang 'products.availability'}}</span>
-                </th>
-                {{#each comparisons}}
-                <td class="compareTable-item">
-                    {{#if availability}}
-                        {{ availability }}
-                    {{else}}
-                        {{lang 'common.not_applicable'}}
-                    {{/if}}
-                </td>
-                {{/each}}
-            </tr>
+
             <tr class="compareTable-row">
                 <th class="compareTable-heading">
                     <span class="compareTable-headingText">{{lang 'common.other_details'}}</span>

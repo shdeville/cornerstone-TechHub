@@ -1,3 +1,17 @@
+{{#if customer}}
+
+    {{#if customer.customer_group_id "==" 10}}
+        <h1 class="page-heading" data-cart-page-title>
+            {{lang 'cart.quote_label' quantity=cart.quantity}}
+        </h1>
+    {{else}}
 <h1 class="page-heading" data-cart-page-title>
     {{lang 'cart.label' quantity=cart.quantity}}
 </h1>
+    {{/if}}
+    
+{{else}}
+    <h1 class="page-heading" data-cart-page-title>
+        {{lang 'cart.quote_label' quantity=cart.quantity}}
+    </h1>
+{{/if}}

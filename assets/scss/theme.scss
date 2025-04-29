@@ -77,3 +77,2583 @@
 // -----------------------------------------------------------------------------
 
 @import "layouts/layouts"; // 1
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+//hide the "All Software" page
+#navPages-77 > ul > li:nth-child(1){
+    display: none;
+}
+
+//hide the "All Resources" page
+#navPages- > ul > li:first-child {
+    display: none;
+}
+
+
+
+
+.skip-to-main-link {
+//    position: absolute;
+//    left: -9999px; /* Move it far off-screen */
+//    width: 1px;    /* Minimize its size */
+//height: 1px;   /* Minimize its size */
+//    overflow: hidden;
+      margin-top: 15px;
+      color: white;
+      font-family: 'Work Sans', sans-serif;
+}
+.skip-to-main-link,
+.skip-to-main-link:visited,
+.skip-to-main-link:hover,
+.skip-to-main-link:focus,
+.skip-to-main-link:active {
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+}
+
+
+
+
+
+
+
+#quick-search-expand {
+        display: none; /* Hide the quick search button */
+    }
+    
+#header-search-input {
+    display: none;
+}
+
+
+
+
+//change the sku styling on cart items
+.cart-item-sku{
+    font-weight: 400 !important;
+}
+
+
+
+
+
+//hide the coupon code section of the cart page
+#main-content > div.container > div > div > div:nth-child(7) > ul > li:nth-child(3){
+    display: none;
+}
+
+/* Experimental header mobile mode start */
+
+@media only screen and (min-width: 801px) {
+    
+    .skip-to-main-link {
+//        position: absolute;
+//        left: -9999px; /* Move it far off-screen */
+//        width: 1px;    /* Minimize its size */
+//        height: 1px;   /* Minimize its size */
+//        overflow: hidden;
+        margin-top: 15px;
+        color: white;
+        font-family: 'Work Sans', sans-serif;
+    }
+    .skip-to-main-link,
+    .skip-to-main-link:visited,
+    .skip-to-main-link:hover,
+    .skip-to-main-link:focus,
+    .skip-to-main-link:active {
+      color: white;
+      font-family: 'Work Sans', sans-serif;
+
+
+    }
+
+
+
+    [data-content-region="header_bottom"],
+    #main-content {
+        max-width: 1650px; /* Adjust this value as needed */
+        margin: 0 auto;
+        padding: 0 1rem;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+
+    .navPages-container {
+        flex: 2; /* Adjusts the menu's width relative to the logo */
+        display: flex;
+    }
+    
+    .navPages {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        
+        
+    }
+    
+    .nav-container {
+        background-color: #ffffff;
+        max-width: 1620px;       /* Set the maximum width */
+        display: flex;           /* Enables Flexbox on the container */
+        justify-content: space-between; /* Spaces the left and right nav apart */
+        align-items: center;     /* Vertically centers the nav items */
+        width: 100%;             /* Ensure it spans the full width of the header */
+        position: relative; /* Needed for pseudo-elements */
+        z-index: 1; /* Ensure it appears above the maroon background */
+        
+        
+        
+
+        
+    }
+    
+    /* Add white "margins" using pseudo-elements */
+    .nav-container::before,
+    .nav-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: #ffffff;
+        z-index: -1;
+    }
+    
+    .nav-container::before {
+        left: -100vw; /* Extend fully to the left */
+        right: 99%;  /* Up to the left edge of nav-container */
+    }
+    
+    .nav-container::after {
+        left: 99%;   /* Start from the right edge of nav-container */
+        right: -100vw; /* Extend fully to the right */
+    }
+    
+    #right-nav {
+        margin: 0;
+        padding: 0;
+        list-style: none;        /* Removes default list styling */
+        display: flex;           /* Aligns the items horizontally */
+        border-top: none; /* Remove top border if it exists */
+        background: none; /* Remove any background image or color */
+        justify-content: flex-end; /* Aligns to the right */
+        margin-left: auto; /* Pushes the right nav to the far right */
+    }
+    
+    #left-nav {
+        margin: 0;
+        padding: 0;
+        list-style: none;        /* Removes default list styling */
+        display: flex;           /* Aligns the items horizontally */
+        border-bottom: none; /* Remove top border if it exists */
+        background: none; /* Remove any background image or color */
+        justify-content: flex-start; /* Aligns to the left */
+    }
+    
+    .container {
+        max-width: 1650px; /* Adjust this value as needed */
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+
+    
+    /* Override for specific element to extend beyond max-width */
+    [data-sub-layout-container="4afe8d4a-efd3-44d7-adf6-4037e28cc0ab"],
+    [data-sub-layout="e180abab-dcf3-4057-8e7b-c3196d09e0b2"] {
+        width: 100vw; /* Full viewport width */
+        max-width: none;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .techhub-banner {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: .5rem;
+        border-top: 6px solid #f6eca0;
+        background: rgb(60,0,0);
+        background: linear-gradient(90deg, rgba(60,0,0,1) 0%, rgba(80,0,0,1) 60%, rgba(115,47,47,1) 100%);
+        
+        display: flex;
+        justify-content: flex-start; /* Aligns content to the left */
+        align-items: center;
+        text-align: left; /* Aligns text to the left */
+    }
+    
+    
+    
+    .techhub-banner h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.75rem;
+        text-transform: none;
+        color: #fff;
+        margin-left: 5.5rem; /* Optional: Adjust this value to add space from the left edge */
+    }
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    .custom-button-wrapper .custom-button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        color: #4f0000; /* Dark red color for the text */
+        background-color: #fff; /* White background */
+        border: 2px solid #4f0000; /* Dark red border */
+        border-radius: 10px; /* Rounded corners */
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: none; /* Removes any box-shadow */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
+    }
+    
+    
+    
+
+    
+    /* Make the .header element stick below the .aux-container */
+    .header {
+        position: fixed;
+        top: 40px; /* Adjust this value based on the height of the .aux-container */
+        left: 0;
+        width: 100%;
+        z-index: 999; /* Ensures it's below .aux-container but above other content */
+        background-color: #500000; /* Set the maroon background for the entire header */
+    }
+    
+    body {
+        padding-top: 160px; /* Adjust this value based on the combined height of .aux-container and .header */
+    }
+    
+    /* Change the position of the "compare" button originally at the top of the screen */
+    .navUser-action.navUser-item--compare.show {
+        position: fixed; /* Ensure it stays at the bottom of the viewport */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000; /* Ensure it's above other content */
+        background-color: #500000; /* Set initial background color */
+        color: white; /* Set initial text color */
+        padding: 20px;
+        text-align: center; /* Center text */
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        width: 100vw; /* Ensure full width at any zoom level */
+        transition: background-color 0.3s ease; /* Smooth hover transition */
+    }
+    
+    .navUser-action.navUser-item--compare.show:hover {
+        background-color: #360000; /* Change background color on hover */
+        color: #000000; /* Change text color to black for contrast */
+    }
+
+    
+    
+    .navUser-action.navUser-item--compare.show .countPill {
+        margin-left: 5px; /* Space between text and the count */
+    }
+    
+    /* Make the .aux-container element stick to the top */
+    .aux-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Ensures it's above other elements */
+    }
+    
+    .aux-components5 .alert {
+        font-weight: normal;
+        display: inline;
+        text-align: center;
+        padding-top: 100px;
+    }
+    
+    .aux-components5 {
+        margin-bottom: 0;
+        background: #D6D3C4;
+        color: #202020;
+        text-align: center;
+    }
+    
+    .aux-components5 .alert p {
+        margin-bottom: 0;
+    }
+    
+    .header-content {
+        max-width: 1620px; /* Set the desired maximum width */
+        width: 100%; /* Ensure it takes up the full width of the parent */
+        margin-left: auto; /* Center the container within the banner */
+        margin-right: auto; /* Center the container within the banner */
+        padding-left: 10px; /* Optional: Add padding to adjust the left position */
+        padding-right: 10px; /* Optional: Add padding to adjust the right position */
+        padding-top: 5px; /* Adjust padding */
+        padding-bottom: 5px; /* Adjust padding */
+        height: 80px; /* Set a fixed height to make it narrower */
+        display: flex;
+        align-items: center; /* Vertically center all items */
+        justify-content: space-between; /* Ensure space between logo, search bar, and menu */
+        gap: 10px; /* Space between items */
+        flex-wrap: nowrap; /* Prevent items from wrapping */
+        position: relative; /* Needed to position pseudo-elements */
+        box-sizing: border-box; /* Ensure padding and height are included */
+    }
+    
+    /* Add maroon "margins" using pseudo-elements */
+    .header-content::before,
+    .header-content::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: #500000;
+        z-index: -1;
+    }
+    
+    .header-content::before {
+        left: -100vw; /* Extend fully to the left */
+        right: 100%;  /* Up to the left edge of header-content */
+    }
+    
+    .header-content::after {
+        left: 100%;   /* Start from the right edge of header-content */
+        right: -100vw; /* Extend fully to the right */
+    }
+    
+    .header-logo {
+        flex: 0 0 300px; /* Fixed width for the logo container */
+        margin: 1rem 1rem 1rem;
+    }
+    
+    .header-logo img {
+        width: 100%; /* Logo will take the full width of its container */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+    #header-search-input {
+        flex: 1; /* Allow search bar to grow within the remaining space */
+        display: flex; /* Use flexbox to align the search input */
+        justify-content: center; /* Center the search bar horizontally */
+        justify-self: center;
+        align-items: center; /* Center the search bar vertically */
+        max-width: 800px; /* Maximum width of the search bar container */
+        min-width: 200px; /* Minimum width of the search bar container */
+    }
+    
+    .header-content.form, .header-content.container, body > header > div.header-content > div > form > fieldset, body > header > div.header-content > div > form {
+        display: flex;
+        align-items: center; /* Center the input field vertically */
+        justify-content: center;
+        width: 100%; /* Form should take full width of the search container */
+        margin-bottom: 0 !important;
+    }
+    
+    
+    .form-field {
+        width: 100%; /* Input should take full width of the form */
+        padding: 0.5em;
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+        margin-bottom: 0;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .form-fieldset {
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .navUser {
+        flex: 0 0 auto; /* Keep the navigation from growing */
+        display: flex;
+        align-items: center; /* Align items vertically */
+        justify-content: flex-end; /* Align items to the right */
+        min-width: 300px; /* Set a minimum width for the navigation menu */
+        max-width: 400px; /* Set a maximum width for the navigation menu */
+        padding-right: 0;
+    }
+    
+    .navUser ul {
+        display: flex; /* Align items horizontally */
+        list-style: none; /* Remove bullet points */
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+    }
+    
+    .navUser-item {
+        margin-left: 15px; /* Adjust space between menu items */
+        justify-self: right;
+    }
+    
+
+    
+    .techhub-banner {
+        display: none !important; /* This hides the header */
+    }
+    
+    .sd-spacer-5f3549b1-a312-4eca-aee0-16eb0dc0b06c {
+        display: none; /* Hide the spacer section */
+    }
+    
+    /* Styling the left arrow button */
+    button.bc-carousel__arrow--left {
+        background-color: #fff; /* White background */
+        border: none; /* Remove border */
+        padding: 10px; /* Add some padding */
+        width: 40px; /* Set width for rectangle button */
+        height: 120px; /* Twice the height */
+        cursor: pointer; /* Change cursor to pointer */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    }
+    
+    /* Styling the arrow as black */
+    button.bc-carousel__arrow--left svg path {
+        fill: #000; /* Set arrow color to black */
+    }
+    
+    /* Styling the right arrow button */
+    button.bc-carousel__arrow--right {
+        background-color: #fff; /* White background */
+        border: none; /* Remove border */
+        padding: 10px; /* Add some padding */
+        width: 40px; /* Set width for rectangle button */
+        height: 120px; /* Twice the height */
+        cursor: pointer; /* Change cursor to pointer */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    }
+    
+    /* Styling the arrow as black */
+    button.bc-carousel__arrow--right svg path {
+        fill: #000; /* Set arrow color to black */
+    }
+    
+    [data-test-id="carousel-bullets"] {
+        display: none !important; /* Hide the entire carousel bullets section */
+    }
+    
+    .navUser .navUser-action {
+        color: #fff !important; /* Change the text color to white */
+    }
+    
+    .navUser .navUser-item-cartLabel,
+    .navUser .countPill {
+        color: #fff !important; /* Ensure cart label and count pill text are also white */
+    }
+    
+    #quick-search-expand {
+        display: none !important; /* Hide the quick search button */
+    }
+    
+    /* PRODUCT CARDS ON CATEGORIES PAGES */
+    
+    /* Reduce the height of the card */
+    .card {
+        padding: 10px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    /* Adjust the image size to reduce card height without cutting off */
+    .card .card-img-container {
+        height: 200px; /* Set a specific height for the image container */
+        overflow: hidden; /* Ensure no overflow */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card .card-img-container img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain; /* Maintain the aspect ratio without cropping */
+    }
+    
+    /* Reduce the padding inside the card body */
+    .card-body {
+        padding: 5px 0;
+    }
+    
+    /* Adjust the font sizes and margins */
+    .card-title, .card-text {
+        font-size: 0.9rem;
+        margin: 5px 0;
+        text-align: center; /* Centers the text of price and product name on catalog pages */
+    
+    }
+    
+    .card-figcaption {
+        padding: 5px 0;
+    }
+    
+    /* Adjust the price section */
+    .price-section {
+        font-size: 0.9rem;
+    }
+    
+    /* Adjust the compare button size and margin */
+    .card-figcaption-button {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+    
+    .card-figure {
+        margin-bottom: 0px; /* Reduce the space below the image */
+
+    }
+    
+    .compare-container {
+        margin-top: 0; /* Remove any additional space above the Compare button */
+        margin-bottom: 0px; /* Add spacing between the Compare button and the brand name */
+        text-align: center; /* Align the Compare button to the center */
+    }
+    
+    .card-figcaption-button {
+        display: inline-block;
+        margin-left: 0; /* Remove extra left margin if needed */
+        margin-right: auto; /* Ensure it stays left-aligned */
+    }
+    
+    /* Set the default text color inside the tab-content element to black */
+    .tab-content.is-active {
+        color: #000000; /* Black color */
+    }
+    
+    /* Set default text color for the productView-info list and its children to black */
+    .productView-info dt,
+    .productView-info dd {
+        color: #000000; /* Black color */
+    }
+    
+    /* Optionally, if there are links in the list, you can exclude them from the black color */
+    .productView-info a {
+        color: inherit; /* Keep links the default color */
+    }
+    
+
+    
+    
+    
+    
+    /* Hide the item preview section in the minicart */ 
+    
+    .previewCartList {
+        display: none !important;
+    }
+    
+    .countPill {
+        background-color: #000000; /* Changes background to black for counting circle pill thingy on cart button and compare banner*/
+    }
+    
+    
+    /* Hide all paragraphs with class 'card-text' and data attribute 'data-test-info-type' set to 'brandName' */
+    p.card-text[data-test-info-type="brandName"] {
+        display: none;
+    }
+    
+    /* Hide the product brand on produt page */
+    h2.productView-brand {
+        display: none;
+    }
+    
+    /* Increase the price text size by 50% on product page */
+    .price-section .price--withoutTax , .price {
+        font-size: 140%; /* 40% larger than the original size */
+        color: #000000; /* Set price color to black */
+    }
+
+
+    .page-heading {
+        margin-bottom: 0; /* Set the bottom margin to 0 */
+    }
+    
+    #main-content {
+        margin-top: 15px; /* Set the top margin to 5px */
+    }
+    
+    form.actionBar {
+        margin-top: 0; /* Remove the top margin */
+        margin-bottom: 0; /* Remove the bottom margin */
+    }
+    
+    .breadcrumbs {
+        margin-bottom: 0; /* Set the bottom margin to 0 on the site navigation route thingy*/
+    }
+    
+    .productView {
+        max-width: 75%; /* Adjust the percentage value width of the product page body as needed */
+        margin: 0 auto; /* Center the container */
+    }
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    .panel--newAddress {
+        display: none; /* removes the add address function under the account section */
+    }
+    
+    a[href*="action=edit_shipping_address"] {
+        display: none; /* removes the edit address function under the account section */
+    }
+    
+    
+    
+    li.navBar-item a[href="/account.php?action=recent_items"] {
+        display: none !important; /* removes the recently viewed tab under account tab for bugs related to the compare function */
+    }
+    
+    
+    li.navBar-item:has(a[href="/account.php?action=account_details"]) {
+        display: none; /* removes the account settings tab under account tab  */
+    }
+    
+    
+    
+    
+    .card-title {
+        font-size: 120%; /* Increases the size of the font of item names on the item catalogue */
+    }
+    
+    div[data-test-id="product-widget-name"] a {
+        font-size: 125% !important; /* Increases the size of the font of item names on the home page select products widget */
+        font-family: 'Oswald';
+        font-weight: 300;
+        color: #500000;
+    }
+    
+    
+    .css-lnidq9.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-0.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
+    .css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-1.css-1grt43l p,
+    .css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-2.css-1grt43l p {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 900;
+        color: #500000; /* Maroon color */
+        font-size: 140%;
+    }
+    
+    
+    
+    .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-0.css-1grt43l p, /* Changing the font of the carousel button  */
+    .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-1.css-1grt43l p,
+    .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-2.css-1grt43l p {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 600;
+        font-size: 65%;
+    }
+    
+    
+    .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-0.css-1grt43l p, /* Changing the font of the carousel sub text  */
+    .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-1.css-1grt43l p,
+    .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-2.css-1grt43l p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 85%; /*   font size */
+    }
+    
+    
+    div[data-widget-id="5511b91e-881f-4e25-ae4a-60c42420fe67"] .centered-link,
+    div[data-widget-id="ba9beffb-0d80-4228-8fba-2add4745502f"] .centered-link,
+    div[data-widget-id="8c68f3e3-1c65-40e6-8cb9-de03f96b3f4f"] .centered-link,
+    div[data-widget-id="1401f77c-be99-4945-9374-a4a4f9a5cc55"] .centered-link {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 700; /* Set weight to 700 */
+        color: #500000;
+        text-decoration: none;
+        font-size: 20px;
+        display: block;
+        text-align: center;
+        padding-top: 30px;
+        font-size: 95%
+    }
+    
+    .css-gzz3ra {
+        font-family: 'Oswald', sans-serif;
+    }
+    
+    
+    .nav-container,
+    .navPages-list,
+    .navPages-action,
+    .navPage-subMenu-action {
+        font-family: 'Work Sans'; /* Apply Work Sans font */
+        font-weight: 600; /* Set font weight */
+        font-size: 1rem; /* Set a default size */
+        color: inherit; /* Keep the text color the same unless you want to change it */
+    }
+    
+    .navUser,
+    .navUser-section,
+    .navUser-item,
+    .navUser-action,
+    .navUser-item--compare,
+    .navUser-item--account,
+    .navUser-item-cartLabel{
+        font-family: 'Work Sans', sans-serif; /* Apply Work Sans font */
+        font-weight: 600; /* Default font weight */
+        font-size: 1rem; /* Optional: Set the size as needed */
+        color: inherit; /* Keep the text color unchanged unless specified */
+    }
+    
+    .page-heading {
+        font-size: 24pt; /* Set font size to 24pt for all elements with class "page-heading" */
+        text-transform: uppercase; /* Make text uppercase */
+    }
+    
+    h1.page-heading, 
+    h2.page-heading {
+        font-size: 24pt; /* Explicitly set font size to 24pt for h1 and h2 with class "page-heading" */
+        text-transform: uppercase; /* Make text uppercase */
+    }
+    
+    
+    ul.navBar-section > li.navBar-item a[href*="action=recent_items"] {         /* Removal of recently viewed items tab in account */
+        display: none !important;
+    }
+    
+    ul.navBar-section > li.navBar-item:has(a[href*="action=recent_items"]) {    /* Removal of recently viewed items tab in account */
+        display: none !important; /* Hide the parent <li> as well */
+    }
+    
+    
+    
+    /* BELOW IS ADJUSTMENTS OF NAV BAR MENUS IN ACCOUNT SETTINGS */
+    
+    
+    /* Parent container (Flexbox settings) */
+    .navBar-section {
+        display: flex;                   /* Enable Flexbox */
+        justify-content: center;         /* Center the items without extra space around */
+        align-items: center;             /* Center items vertically */
+        width: 100%;                     /* Full width for the container */
+        padding: 0;                      /* Remove padding */
+        margin: 0;                       /* Remove margin */
+        gap: 10px;                       /* Control spacing between items */
+    }
+    
+    /* Style for individual items in the Flexbox menu */
+    .navBar-item {
+        flex: 0 0 auto;                  /* Prevent items from stretching */
+        margin: 0;                       /* Remove individual item margins */
+    }
+    
+    /* Set custom widths for each item */
+    .navBar-item:nth-child(1),
+    .navBar-item:nth-child(2),
+    .navBar-item:nth-child(3) {
+        width: 150px;                    /* Set equal width for each item */
+    }
+    
+    /* Default text color for nav items */
+    .navBar-item .navBar-action {
+        color: black;                 /* Set default text color to black */
+        text-decoration: none;        /* Remove underline if present */
+    }
+    
+    /* Hover state for nav items */
+    .navBar-item .navBar-action:hover {
+        color: black;                 /* Keep text black on hover */
+    }
+    
+    /* Active/Selected state for nav items */
+    .navBar-item.is-active .navBar-action {
+        color: black;                 /* Ensure active item has black text */
+    }
+    
+    /* Focused state */
+    .navBar-item .navBar-action:focus {
+        color: black;                 /* Keep text black on focus */
+    }
+    
+    /* END OF NAV BAR ADJUSTMENTS */
+    
+    
+    
+    /* Change text color of .account-orderStatus-label */
+    .account-orderStatus-label {
+        color: #500000;          /* Set text color */
+        font-size: 12pt;
+        background: none;            /* Remove any background */
+        background-color: transparent; /* Ensure no background color */
+    }
+    
+    /* BEGINNING OF QUICK SPECS ALTERATIONS */
+    
+    .productView-info-container {  
+        margin-bottom: 10px; /* Spacing between rows */
+      }
+    
+      .productView-info-name {
+        font-weight: bold;
+        display: inline;
+        margin-right: 5px; /* Space between name and value */
+      }
+    
+      .productView-info-value {
+        display: inline;
+      }
+      
+    .productView-info-name {
+      font-size: 12pt;
+    }
+    
+    
+    
+    .productView-info-name.sku-label {
+        font-size: 12pt;  /* Change the font size as needed */
+        color: #4f0000;   /* Change to your desired color */
+        display: none;    /* Do not show SKU label on SKU above name of product on product page */
+    }
+    
+    .productView-info-value[data-product-sku] {
+        font-size: 9pt;  /* Change the font size as needed */
+        color: #333333;   /* Change to your desired color */
+    }
+    
+    /* END OF QUICK SPECS ALTERATIONS */
+    
+    
+    .form-label.form-label--alternate {
+        font-size: 12pt;  /* font size of "quantity" label on product pages and possibly other alternative elements */
+        color: black;
+    }
+    
+    /* Apply work sans font to elements on added to cart menu*/
+    .previewCartCheckout-subtotal,
+    .previewCartCheckout-subtotal strong,
+    [data-cart-quantity] {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 14pt;
+        font-weight: 600;
+    }
+    
+    
+    .productView-title {            /* product titles */
+        text-transform: uppercase; /* Make text uppercase */
+    }
+    
+    h2 {
+        text-transform: uppercase; /* Make all h2 text uppercase */
+    }
+    
+    label.form-label {
+        font-family: 'Work Sans', sans-serif; /* Updated font-family for labels */
+        font-weight: 600;
+        text-transform: uppercase; /* Make text uppercase */
+        color: #000000;
+    }
+    
+    .cart-item-brand {
+        display: none; /* Hides the brand element on items in cart*/
+    }
+    
+    .cart-item-name__label {
+        text-transform: none !important; /* Make product font on product page NOT uppercase like other h2  */
+    }
+    
+    
+    [data-zoom-image] { /* Disables zooming product images on product page */
+        pointer-events: none;
+    }
+    
+    .productView-thumbnails { /*hides the product image thumbnails under the main image on the product pages */
+        display: none;
+    }
+    
+    
+    /* Set the dimensions of the main image container */
+    .productView-image {
+        width: 500px;
+        height: 500px;
+        overflow: hidden; /* Hide any overflow if the image is larger */
+    }
+    
+    /* Ensure the image container fills the main container */
+    .productView-img-container {
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Style the image to fit the container */
+    .productView-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintain aspect ratio and fill the container */
+    }
+    
+    
+    
+    /* HEADER MENU CONFIGURATION START */
+    
+    
+    /* Ensure parent menu items are positioned relative */
+    .navPages-item {
+        position: relative;
+    }
+    
+    /* Position the submenu absolutely relative to the parent */
+    .navPage-subMenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        /* You can adjust 'left' to align the submenu as needed */
+        /* Example: left: 50%; transform: translateX(-50%); for centered alignment */
+        /* Remove any conflicting 'left' or 'right' styles that may interfere */
+    }
+    
+    /* Remove background color on menu buttons in all states */
+    .navPages-action,
+    .navPages-action:hover,
+    .navPages-action:focus,
+    .navPages-action:active,
+    .navPages-action:visited,
+    .navPages-action:focus-visible,
+    .navPages-action:focus-within {
+        background-color: transparent !important;
+        color: inherit !important;
+    }
+    
+    /* HEADER MENU CONFIGURATION END */
+    
+    
+    /* BREADCRUMB MENU CONFIGURATION START */
+    
+    nav[aria-label="Breadcrumb"] {
+        display: flex;
+        justify-content: left; /* Center the breadcrumb container */
+        width: 100%; /* Ensure it takes full width */
+        margin-left: 5px; /* Adjust this value to move the breadcrumb slightly to the right */
+    
+    }
+    
+    
+    
+    .breadcrumb {
+        margin-right: 10px; /* Add spacing between breadcrumb items */
+    }
+    
+    /* BREADCRUMB MENU CONFIGURATION END */
+    
+    
+    
+    
+    
+    
+    
+    
+    /* PRODUCT PAGES FONT CONFIGURATION START */
+    
+    
+    .productView-info {
+        font-size: 16px; /* Set the font size for all elements inside this container */
+    }
+    
+    .productView-info-name,
+    .productView-info-value {
+        font-size: inherit; /* Inherit the 16px font size from the parent container */
+    }
+    
+    .tabs-contents {
+        font-size: 16px; /* Set the font size for all elements inside this container */
+    }
+    
+    .tabs-contents p,
+    .tabs-contents strong,
+    .tabs-contents span,
+    .tabs-contents a {
+        font-size: inherit; /* Ensure all elements inherit the 16px font size */
+    }
+    
+    .productView-info-name {
+        font-size: 18px; /* Specifically set the font size for this class (quick specs section headers) to 18px */
+    }
+    
+    #form-action-addToCart {
+        font-size: 22px; /* Adjust the font size of add to cart button */
+    }
+    
+    
+    /* PRODUCT PAGES FONT CONFIGURATION END */
+    
+/* Wrapper to hold both nav and main content */
+.about-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* About Nav */
+.about-nav {
+    position: absolute; /* Use absolute to position relative to the nearest positioned ancestor */
+    background-color: transparent;
+    width: 200px;
+    z-index: 1;
+    top: 150px; /* Set top to position it higher */
+    left: 2%; /* Move the left position further left (adjust as needed) */
+    padding-top: 0;
+}
+
+/* Hide navbar on small screens */
+@media screen and (max-width: 1200px), screen and (max-height: 480px) {
+    .about-nav {
+        display: none; /* Hides the navbar on small screens */
+    }
+}
+
+/* Wrapper for the nav text to create indentation */
+.about-nav-text-wrapper {
+    position: relative; /* Keep it relative for the pseudo-element */
+    padding-left: 10px; /* Adjust this value for the desired indentation */
+}
+
+/* Left red line styling - only for the text wrapper */
+.about-nav-text-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0; /* Position it to the left */
+    top: 0; /* Start from the top */
+    bottom: 0; /* Stretch to the bottom */
+    width: 2px; /* Adjust width to make it thinner */
+    background-color: #500000; /* Color of the red line */
+    margin-left: 15px; /* Increase indent of the bar to match text */
+}
+
+/* Navbar title */
+.about-NavBarTitle {
+    font-family: 'Work Sans', sans-serif !important; 
+    font-weight: 400 !important; 
+    font-size: 16px !important; 
+    color: black !important; 
+    padding-left: 10px; /* Padding to align text */
+    position: relative; /* Needed for the red line */
+    text-decoration: none; /* Remove default underline */
+}
+
+/* Navbar text */
+.about-NavBarText {
+    font-family: 'Work Sans', sans-serif !important; 
+    font-weight: 400 !important; 
+    font-size: 16px !important; 
+    color: black !important; 
+    padding-left: 15px; /* Shift nav text 5px to the right */
+    position: relative; /* Needed for the red line */
+    text-decoration: none; /* Remove default underline */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide any overflow text */
+    text-overflow: ellipsis; /* Optional: Add ellipsis for overflow */
+}
+
+/* Hover effect */
+.about-NavBarText:hover {
+    text-decoration: underline !important; /* Underline text on hover */
+}
+
+/* Main Content Styling */
+.about-main-content {
+    flex-grow: 1; /* Allow the main content to take up remaining space */
+    padding-left: 50px; /* Increase padding to create more space between nav and main content */
+    padding-top: 20px; /* Ensure the content has top padding */
+}
+
+/* Ensure about-category and other content doesn't overlap */
+.about-category {
+    margin-top: 20px; /* Adjust to avoid negative margins */
+    padding-top: 0; /* Remove unnecessary padding */
+}
+
+/* Existing styles for category, subcategory, and other page elements */
+.about-category {
+    font-family: 'Work Sans', sans-serif !important; 
+    color: black !important; 
+    font-weight: 900 !important; 
+    font-size: 24px !important; 
+    margin-bottom: 5px !important; 
+    scroll-margin-top: 200px !important;
+}
+
+.about-subcategory {
+    font-family: 'Oswald', sans-serif !important;
+    color: #500000 !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    margin-bottom: 5px !important;
+}
+
+.about-subcategory-text {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+/* Steps container */
+.about-steps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 160px; 
+    margin-top: 20px; 
+}
+
+.about-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.about-circle {
+    background-color: #500000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: large;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.about-dashed-line {
+    width: 2px;
+    height: 70px;
+    border-left: 4px dashed #500000;
+    margin-left: 25px;
+    margin-bottom: -24px;
+}
+
+.about-step:last-child .about-dashed-line {
+    display: none;
+}
+
+.about-circle-text {
+    font-family: 'Open Sans', sans-serif !important;
+    color: #500000 !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+.about-circle-number {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+    
+    /* By default, keep the .navUser on the right */
+    .navUser {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    min-width: 0;
+    }
+
+    /* Move .navUser to the left on smaller screens */
+    @media only screen and (max-width: 985px) {
+    
+    .header-logo.header-logo--left {
+        height: 100px !important;
+    }
+    
+    .header-content {
+        justify-content: space-between; /* Ensure space between logo and nav items */
+    }
+
+    .navUser {
+        position: relative;
+        left: -45px; /* Move it further left */
+    }
+    }
+    
+    
+    
+    
+    /* Move .navUser to the left on smaller screens AT WIDER WIDTH */
+    @media only screen and (max-width: 1100px) {
+    .navUser {
+        justify-content: flex-start; /* Align nav items to the left */
+         margin-left: 0; /* Reset any right margin */
+    }
+    }
+        
+    
+/* START OF PRODUCT PAGE WIDTH ADJUSTMENTS */        
+        
+        
+@media only screen and (max-width: 1410px) {
+    /* Set a max width for the product image */
+    .productView-img-container img {
+        max-width: 300px; /* Adjust size for screens under 1410px */
+        height: auto; /* Maintain aspect ratio */
+        float: left; /* Align image to the left */
+    }
+    .arrows-container {
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 1140px) {
+    /* Set a max width for the product image */
+    .productView-img-container img {
+        max-width: 250px; /* Adjust size for screens under 1000px */
+        height: auto; /* Maintain aspect ratio */
+        float: left; /* Align image to the left */
+        margin-left: -5px;
+    }
+    
+    .arrows-container {
+        margin-left: -45px;
+    }
+    
+}
+
+/* END OF PRODUCT PAGE WIDTH ADJUSTMENTS */        
+        
+        
+        
+/* Fix for left shift of top right elements on header */    
+@media only screen and (max-width: 900px) {
+    #header-search-input {
+        margin-left: -95px;
+    }
+}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+
+
+/* START FONT CHANGES A ALL WINDOW SIZES */
+
+
+.css-lnidq9.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-0.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
+.css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-1.css-1grt43l p,
+.css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-2.css-1grt43l p {
+    font-family: 'Work Sans', sans-serif;
+	font-weight: 900;
+}
+
+
+.css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-0.css-1grt43l p, /* Changing the font of the carousel button  */
+.css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-1.css-1grt43l p,
+.css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-2.css-1grt43l p {
+        font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
+
+}
+
+
+.css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-0.css-1grt43l p, /* Changing the font of the carousel sub text  */
+.css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-1.css-1grt43l p,
+.css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-2.css-1grt43l p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 85%; /*   font size */
+}
+
+
+
+div[data-widget-id="5511b91e-881f-4e25-ae4a-60c42420fe67"] .centered-link,
+div[data-widget-id="ba9beffb-0d80-4228-8fba-2add4745502f"] .centered-link,
+div[data-widget-id="8c68f3e3-1c65-40e6-8cb9-de03f96b3f4f"] .centered-link,
+div[data-widget-id="1401f77c-be99-4945-9374-a4a4f9a5cc55"] .centered-link {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700; /* Set weight to 700 */
+}
+
+
+.css-gzz3ra {
+    font-family: 'Oswald', sans-serif;
+    }
+
+
+label.form-label {
+    font-family: 'Work Sans', sans-serif; /* Updated font-family for labels */
+    font-weight: 600
+}
+
+.about-NavBarTitle {
+    font-family: 'Work Sans', sans-serif !important; 
+    font-weight: 400 !important; 
+}
+
+/* Navbar text */
+.about-NavBarText {
+    font-family: 'Work Sans', sans-serif !important; 
+    font-weight: 400 !important;
+}
+
+
+/* Existing styles for category, subcategory, and other page elements */
+.about-category {
+    font-family: 'Work Sans', sans-serif !important; 
+    color: black !important; 
+    font-weight: 900 !important; 
+}
+
+.about-subcategory {
+    font-family: 'Oswald', sans-serif !important;
+    color: #500000 !important;
+    font-weight: 500 !important;
+}
+
+.about-subcategory-text {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    }
+
+
+
+.about-circle-text {
+    font-family: 'Open Sans', sans-serif !important;
+    color: #500000 !important;
+    font-weight: bold !important;
+
+}
+
+.about-circle-number {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: bold;
+    }
+
+/* END FONT CHANGES A ALL WINDOW SIZES */
+
+
+
+/* Ensures hidden banner on mobile also */
+.techhub-banner {
+    display: none !important; /* This hides the header */
+    }
+    
+/* Top right text on header */
+.navUser .navUser-action {
+        color: #fff !important; /* Change the text color to white */
+    }
+    
+ 
+/* Fix the mobile hamburger menu color */
+.mobileMenu-toggleIcon::before,
+.mobileMenu-toggleIcon::after {
+    color: white; /* Change to the desired color */
+    background-color: white !important;
+}
+
+.mobileMenu-toggleIcon {
+    background-color: white !important;
+
+}
+.mobileMenu-toggle.is-open[aria-expanded="true"] .mobileMenu-toggleIcon {
+    background-color: #500000 !important; /* Makes the element fully transparent */
+}
+
+
+
+
+
+
+
+
+
+
+/* Configuration of header and other things on mobile view */
+@media (max-width: 800px) {
+    
+.header-logo-image {
+    max-width: none; /* Remove any maximum width restrictions */
+    max-height: none; /* Remove any maximum height restrictions */
+    width: auto;
+    height: auto;
+    transform: scale(0.9); /* Adjust scale as needed */
+    object-fit: contain; /* Maintains the aspect ratio */
+}
+
+.header-logo-image-container,
+.header-logo__link,
+.header-logo {
+    overflow: visible !important;
+    position: relative;
+    top: 9px; /* Adjust the value as needed */
+}
+
+
+.header {
+    position: fixed;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Positions it directly below the .header */
+    left: 0;
+    width: 100%;
+    height: 50px; /* Adjust height as needed */
+    background-color: #500000; /* Maroon color */
+    z-index: -1; /* Ensures it appears in front other elements */
+}
+
+.header:has(.navPages-container.is-open) .header-logo-image-container {
+    display: none;
+}
+
+#bc-carousel-container-542e44aa-bb7f-409e-ac1c-ac584680dae1 {
+    display: none;
+}
+
+.compare-container {
+    display: none;
+}
+
+.navPages-container.is-open #header-search-input,
+.navPages-container.is-open #quick-search-expand {
+    display: block !important;
+}
+
+//guest banner on mobile
+    /* Make the .aux-container element stick to the top */
+    .aux-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Ensures it's above other elements */
+    }
+    
+    .aux-components5 .alert {
+        font-weight: normal;
+        display: inline;
+        text-align: center;
+        padding-top: 100px;
+    }
+    
+    .aux-components5 {
+        margin-bottom: 0;
+        background: #D6D3C4;
+        color: #202020;
+        text-align: center;
+    }
+    
+    .aux-components5 .alert p {
+        margin-bottom: 0;
+    }
+    
+
+
+
+}
+
+
+
+
+
+/* Add padding above catalog page under the header so it's not so tight*/
+.page {
+    padding-top: 15px;
+}
+/* Add padding below the "sort by" box so it's not so tight*/
+
+.form-fieldset.actionBar-section {
+    padding-bottom: 10px;
+}
+
+/* Disabling weird bar at top of search page */
+
+ul.navBar-section.account-navigation[role="tablist"] {
+    display: none;
+}
+
+/* Disabling another weird bar at top of search page */
+div.panel.panel--large {
+    display: none;
+}
+
+
+
+
+
+
+
+/* Accordion start */
+/* General Styles */
+.mobile-search .search .mobile-search__popular .aux-accordion {
+  border: 2px solid #d1d1d1;
+  border-radius: 10px;
+  max-width: 1400px;
+  margin: 0 0.75rem 1.25rem;
+  transition: border-color 0.1s ease;
+}
+
+.mobile-search .search .mobile-search__popular .aux-accordion .aux-accordion__title span {
+  font-family: "Work Sans", Arial, sans-serif !important;
+  font-size: 1rem !important;
+  font-style: italic;
+  font-weight: 400 !important;
+  color: #3e3e3e;
+}
+
+.mobile-search .search .mobile-search__popular .aux-accordion .aux-accordion__title span a {
+  font-family: inherit !important;
+  font-size: 1.25rem !important;
+  font-style: italic;
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.mobile-search .search .mobile-search__popular .aux-accordion .aux-accordion__title span a::after {
+  content: "";
+  -webkit-mask-image: url("../../icons/aux-prod-icons/arrow-right-long.svg");
+  mask-image: url("../../icons/aux-prod-icons/arrow-right-long.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 0.8rem;
+  -webkit-mask-position: bottom;
+  mask-repeat: no-repeat;
+  mask-position: bottom;
+  mask-size: 0.8rem;
+  width: 1.1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  background-color: #500000;
+}
+
+.mobile-search .search .mobile-search__popular .aux-accordion .aux-accordion__title span a:hover::after,
+.mobile-search .search .mobile-search__popular .aux-accordion .aux-accordion__title span a:focus::after,
+.mobile-search .search .mobile-search__popular .aux-accordion .aux-accordion__title span a:active::after {
+  background-color: #732f2f;
+}
+
+/* Accordion Styles */
+.aux-accordion {
+  border: 2px solid #d1d1d1;
+  border-radius: 10px;
+  margin: 0 0.75rem 1.25rem;
+}
+
+.aux-accordion.focus {
+  outline: solid #500000 0.2rem;
+  border-color: #500000;
+}
+
+.aux-accordion:hover {
+  border-color: #732f2f;
+}
+
+/* Updated Button Styles */
+.aux-accordion > span button {
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 1.5rem;
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+}
+
+/* Extend clickable area to nested elements */
+.aux-accordion-trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.aux-accordion__title,
+.ns-h3 {
+  pointer-events: none; /* Pass clicks to the parent button */
+  font-family: "Work Sans", Arial, sans-serif !important;
+  font-weight: 700 !important; /* Bold weight */
+  font-size: 24px !important;  /* Size for group titles */
+}
+
+/* Accordion Group Title - Specific h2 targeting */
+.heading-group h2 {
+  font-family: "Work Sans", Arial, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  color: #000000 !important; /* New color for accordion group titles */
+}
+
+
+
+/* Content for expanded and collapsed states */
+.aux-accordion > span button::after {
+  position: absolute;
+  right: 0;
+  padding-right: 1.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  font-family: "Open Sans", Arial, sans-serif !important;
+  color: #000000;
+}
+
+.aux-accordion > span button[aria-expanded="true"]::after {
+  content: "Collapse -"; /* Show when expanded */
+}
+
+.aux-accordion > span button[aria-expanded="false"]::after {
+  content: "Expand +"; /* Show when collapsed */
+}
+
+/* Accordion Titles */
+.aux-accordion-trigger span {
+  font-family: "Work Sans", Arial, sans-serif !important;
+  font-weight: 600 !important;  /* Bold weight */
+  font-size: 18px !important;   /* Size for accordion titles */
+  color: #500000 !important; /* New color for accordion titles */
+}
+
+/* Accordion Descriptions */
+.aux-accordion-panel p {
+  font-family: "Open Sans", Arial, sans-serif !important;
+  font-weight: 400 !important;  /* Regular weight */
+  font-size: 16px !important;   /* Size for accordion descriptions */
+  color: #3e3e3e !important; /* New color for accordion descriptions */
+}
+
+/* Slim Accordion Specific Styles */
+.aux-accordion--publication,
+.aux-accordion--slim,
+.accordion-group--slim .accordion-container .aux-accordion {
+  border: none;
+  border-radius: 0;
+  max-width: 1400px;
+  margin-bottom: 0;
+  transition: 0.1s ease;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  border-bottom: dotted #a7a7a7 2px;
+}
+
+.aux-accordion--publication.focus,
+.aux-accordion--slim.focus,
+.accordion-group--slim .accordion-container .aux-accordion.focus {
+  outline: solid #500000 0.2rem;
+  border-bottom: solid #500000 2px;
+}
+
+.aux-accordion--publication .aux-accordion-panel,
+.aux-accordion--slim .aux-accordion-panel,
+.accordion-group--slim .accordion-container .aux-accordion .aux-accordion-panel {
+  margin: 0 1rem;
+  padding: 1rem 0;
+  border-top: solid 1px #d1d1d1;
+}
+
+.aux-accordion--publication > span,
+.aux-accordion--slim > span,
+.accordion-group--slim .accordion-container .aux-accordion > span {
+  display: flex;
+  align-items: center;
+}
+
+.aux-accordion--publication > span > h3,
+.aux-accordion--publication > span h2,
+.aux-accordion--slim > span > h3,
+.accordion-group--slim .accordion-container .aux-accordion > span > h3,
+.aux-accordion--slim > span h2,
+.accordion-group--slim .accordion-container .aux-accordion > span h2 {
+  width: 100%;
+}
+
+.aux-accordion--publication > span button,
+.aux-accordion--slim > span button,
+.accordion-group--slim .accordion-container .aux-accordion > span button {
+  padding: 1rem;
+}
+
+.aux-accordion--publication > span button[aria-expanded=true]::after,
+.aux-accordion--slim > span button[aria-expanded=true]::after,
+.accordion-group--slim .accordion-container .aux-accordion > span button[aria-expanded=true]::after,
+.aux-accordion--publication > span button[aria-expanded=false]::after,
+.aux-accordion--slim > span button[aria-expanded=false]::after,
+.accordion-group--slim .accordion-container .aux-accordion > span button[aria-expanded=false]::after {
+  font-size: 0.95rem;
+}
+
+.aux-accordion--publication > span button .aux-accordion__title .ns-h3,
+.aux-accordion--slim > span button .aux-accordion__title .ns-h3,
+.accordion-group--slim .accordion-container .aux-accordion > span button .aux-accordion__title .ns-h3 {
+  font-size: 1.3rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .aux-accordion > span button::after {
+    padding-right: 1rem;
+  }
+  .aux-accordion--slim > span button::after {
+    padding-right: 1rem;
+  }
+}
+
+
+
+
+
+
+
+/*  Fixing Global Fonts */
+
+h1, h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 150% !important;
+}
+
+.cart-item-name__label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+
+.price--withoutTax, .navList-action, .breadcrumb-label, .product-widget-price, .form-select, .form-select--small, .sidebarBlock-heading, .compare-container  {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.sidebarBlock-heading, .compare-container, .productView-info-name, .form-input--incrementTotal, .productView-brand, .productView-price {
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Make quantity font black */
+.form-input--incrementTotal {
+    color: #000000;
+}
+
+
+
+/*  Add to cart button style */
+.add-to-cart-buttons .form-action input[type="submit"] {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 11pt !important;
+    width: 185px;
+    height: 40px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    background-color: #500000; /* Set button color */
+    color: #ffffff; /* Set text color to white for contrast */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* Remove default border if any */
+    transition: background-color 0.3s ease; /* Add transition for a smooth hover effect */
+
+}
+
+.add-to-cart-buttons {
+    padding-left: 0 !important; /* Remove left padding for the button container */
+}
+
+.add-to-cart-buttons .form-action input[type="submit"]:hover {
+    background-color: #360000; /* Change button color on hover */
+}
+
+
+
+
+/* Go to checkout button style. */ 
+
+
+.button.button--primary[data-reveal-close] {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 9pt !important;
+    width: 185px;
+    height: 40px;
+    padding: 0 5px; /* Remove vertical padding */
+    box-sizing: border-box;
+    background-color: #500000; /* Set button color */
+    color: #ffffff; /* Set text color to white for contrast */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* Remove default border if any */
+    display: inline-block; /* Ensure the link behaves like a button */
+    text-align: center; /* Center the text inside the button */
+    line-height: 40px; /* Match the height for perfect vertical centering */
+    text-decoration: none; /* Remove underline from link */
+    transition: background-color 0.3s ease; /* Add transition for a smooth hover effect */
+
+    
+}
+
+
+
+
+
+
+.button.button--primary[data-reveal-close]:hover {
+    background-color: #360000; /* Change button color on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Continue shopping button style */
+.button[href="/cart.php"] {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 9pt !important;
+    width: 185px;
+    height: 40px;
+    padding: 0 5px; /* Remove vertical padding */
+    box-sizing: border-box;
+    background-color: #ffffff; /* Set button color */
+    color: #000000; /* Set text color to black for contrast */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* Remove default border if any */
+    display: inline-block; /* Ensure the link behaves like a button */
+    text-align: center; /* Center the text inside the button */
+    line-height: 40px; /* Match the height for perfect vertical centering */
+    text-decoration: none; /* Remove underline from link */
+    transition: background-color 0.3s ease; /* Add transition for a smooth hover effect */
+}
+
+.button[href="/cart.php"]:hover {
+    background-color: #ededed; /* Change button color on hover */
+
+}
+
+
+/*  Product Selection Overview category dropdown styling */
+.category-filter-container #categoryFilter {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 11pt; /* Adjust font size if needed */
+    padding: 5px;
+    border: 1px solid #ccc; /* Optional: add a border */
+    border-radius: 0; /* Optional: remove rounded corners */
+    box-sizing: border-box; /* Ensure consistent sizing */
+}
+
+/* Remove "Sort by" options on category catalogue pages */
+#sort option:nth-child(1), /* Featured Items */
+#sort option:nth-child(3), /* Best Selling */
+#sort option:nth-child(6)  /* By Review */ {
+    display: none;
+}
+
+
+
+
+/* Change style of the back button */
+.back-button {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 11pt !important;
+    width: 260px;
+    height: 40px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    background-color: #500000 !important; /* Set button color */
+    color: #ffffff; /* Set text color to white for contrast */
+    border-radius: 0 !important; /* Remove rounded corners */
+    border: none; /* Remove default border if any */
+    transition: background-color 0.3s ease; /* Add transition for a smooth hover effect */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+}
+
+.back-button:hover {
+    background-color: #360000 !important; /* Change button color on hover */
+}
+
+/* Change style of tab on product page */
+
+.tab-title {
+    font-family: 'Work Sans', sans-serif !important;
+    font-weight: 700;
+    color: #500000!important;
+    font-size: 12pt !important;
+    text-decoration: none;
+}
+
+/* change body font */
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+p strong {
+    font-weight: 700;
+}
+
+
+/* Change quick specs font */
+.productView-info,
+.productView-info-name,
+.productView-info-value {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.productView-info-name {
+    font-weight: 700;
+}
+
+
+
+
+
+/* Anchor "sort by" option on catalog to the right and moved higher - NON MOBILE ONLY */
+@media (min-width: 801px) {
+    /* Ensure parent container of actionBar-section is a flex container */
+    .actionBar {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%; /* Take up full width for proper alignment */
+    }
+
+    .actionBar-section {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+        top: -65px; /* Adjust this value to shift up the form field */
+    }
+
+    .actionBar-section .form-field {
+        display: flex;
+        align-items: center;
+    }
+
+    .actionBar-section .form-label {
+        margin-right: 10px; /* Add some spacing between label and select field */
+    }
+    
+    /* Apply the Work Sans font to the select dropdown and adjust height */
+    #sort {
+        font-family: 'Work Sans', sans-serif;
+        line-height: 1.5; /* Increase line height for better vertical alignment */
+        height: 2.5em; /* Adjust height to give more room for text */
+    }
+    
+    .actionBar-section {
+        transform: scale(0.80); 
+        transform-origin: top left; /* Keep scaling consistent from the top left */
+    }
+}
+
+
+
+
+
+//Hide default Footer, reduce footer section padding
+body > footer > div.container{
+    display: none;}
+
+.footer{
+    padding: 10px 0px;
+}
+
+
+//css for quote link
+.fake-link {
+    text-align: center !important;
+    transition: all 0.1s ease;
+    color: #500000;
+    text-transform: uppercase;
+    line-height: normal;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+}
+
+.fake-link:hover{
+    border-bottom-color: transparent !important;
+
+}
+
+.checkout-container {
+    display: flex;
+    flex-direction: column; /* Stacks button and quote link vertically */
+    align-items: flex-end !important; /* Aligns content to the right */
+    text-align: right;
+}
+
+#checkout-button {
+    width: auto; /* Keep button width reasonable */
+    margin-bottom: 10px;
+    float: none; /* Remove float to prevent width limitation */
+    text-align: right !important;
+    
+}
+
+#quote_fake_link {
+    margin-top: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+
+/* Configure header search button location, appearance, and disabling it in mobile mode */
+.container .form-fieldset .form-field {
+    display: flex; /* Aligns the input and button on the same line */
+    align-items: center; /* Vertically centers both elements */
+}
+
+.container .form-fieldset .form-input {
+    color: #000000; /* Sets the text color to black */
+    border-radius: 0; /* Removes rounded corners */
+
+}
+
+.container .form-fieldset .search-button {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 9pt !important;
+    width: auto;
+    padding: 0 15px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 0;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: normal;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-left: 10px; 
+}
+@media (max-width: 800px) {
+    .container .form-fieldset .search-button {
+    display: none;
+
+    }
+}
+
+.footer {
+    border-top: 25px solid #ffffff;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.footer .nav-link {
+    color: #ffffff; /* Set the default link color to white */
+    transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+.footer .nav-link:hover {
+    color: #f4f4f4; /* Corrected hover color */
+}
+
+
+/* Move checkout button to the right of the cart page and style it */
+.checkout_container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+}
+
+
+#checkout-button {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem; /* Adjust font size for consistency */
+    width: 185px;
+    height: 40px;
+    padding: 0; /* Remove padding */
+    background-color: #500000; /* Button background color */
+    color: #ffffff; /* White text color */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* No border */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    cursor: pointer;
+    box-sizing: border-box; /* Ensure padding doesn’t affect size */
+}
+#checkout-button:hover {
+    background-color: #360000; /* Darker color on hover */
+}
+
+
+/* Style the save quote button on the cart page */
+.button.button--primary {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem; /* Adjust font size for consistency */
+    width: 185px;
+    height: 40px;
+    padding: 0; /* Remove padding */
+    background-color: #500000; /* Button background color */
+    color: #ffffff; /* White text color */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* No border */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    cursor: pointer;
+    box-sizing: border-box; /* Ensure padding doesn’t affect size */
+}
+
+.button.button--primary:hover {
+    background-color: #360000; /* Darker color on hover */
+}
+
+
+/* Style changes to the top nav on the account pages */
+.navBar-section {
+    font-family: 'Work Sans', sans-serif; /* Set font to Work Sans */
+    font-size: 1.2rem; /* Adjust font size as needed */
+    padding-top: 10px !important; /* Add top padding */
+
+}
+
+.navBar-section .navBar-item .navBar-action {
+    font-size: 1.2rem; /* Set larger font size for links */
+    font-weight: 600; /* Optionally make the font bold */
+    text-transform: uppercase; /* Optional: make text uppercase */
+    color: #000000; /* Set the color as desired */
+    text-decoration: none; /* Remove underline */
+}
+
+.navBar-section .navBar-item .navBar-action:hover {
+    color: #500000; /* Set hover color if desired */
+}
+
+
+/* Changes to styles on the account pages */
+.account-product-details,
+.account-product-details h6,
+.account-product-details span {
+    font-family: 'Open Sans', sans-serif; /* Set font to Open Sans */
+    font-size: 1rem; /* Adjust font size as needed */
+    color: #000000; /* Set color if needed */
+}
+
+.account-product-detail-heading {
+    font-weight: 700; /* Make headings bold */
+}
+
+.account-product-detail span {
+    font-weight: 400; /* Normal weight for span elements */
+}
+.account-listItem,
+.account-listItem * {
+    color: #000000 !important; /* Set font color to black for all child elements */
+}
+
+/* Disable home page icons and resources menu options (compatibility and vetting) for mobile */
+@media (max-width: 800px) {
+
+
+[data-widget-id="5475b4cf-0e2e-4df0-9df1-7f1b01d1e3c5"] {
+    display: none !important;
+}
+
+[data-widget-id="540417ea-4fd2-4dc2-9cf6-2d909e2e8753"] {
+    display: none !important;
+}
+
+[data-widget-id="7ccd424f-5e84-4ba3-9998-ccb38191d06c"] {
+    display: none !important;
+}
+
+[data-widget-id="1b9550b8-fa59-4b9f-972d-75b52079a79a"] {
+    display: none !important;
+}
+}
+
+
+
+
+
+/* Center align category descriptions on catalog pages and width limit them */
+.category-description-wrapper {
+    max-width: 650px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the element horizontally */
+    text-align: left;
+}
+
+/* Ensure parent container isn't forcing other alignments */
+.page-region {
+    display: flex;
+    justify-content: center; /* Center the child element */
+}
+
+/* bump down the "sort by" so it doesn't hit the category description at a certain width and below */
+@media (max-width: 1265px) {
+.actionBar-section {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+        top: 0px !important; /* Adjust this value to shift up the form field */
+}
+}
+
+
+
+
+
+
+/* Disable "Expand" text on FAQ acordian when in mobile mode */
+@media (max-width: 800px) {
+.aux-accordion-trigger::after {
+  content: none !important; /* Removes the content from the ::after pseudo-element of the button */
+}
+}
+
+/* Styling of sidebar on catagory catalog pages */
+.sidebarBlock-heading {
+    color: black;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.navList .navList-item .navList-action {
+    font-size: 14px;
+}
+
+
+
+
+
+/* Center and change FAQ page to card (not slim) version */
+
+.faq-section-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.accordion-group {
+    width: 100% !important; /* Adjust width as needed */
+    max-width: 800px !important; /* Optional: to restrict the maximum width of each group */
+    margin: 20px 0 !important; /* Adds spacing between groups */
+    text-align: center !important; /* Centers text content within the group */
+}
+
+.section-intro {
+    margin-bottom: 20px !important;
+}
+
+.section-intro__content {
+    text-align: center !important;
+}
+
+.heading-group h2 {
+    font-size: 1.5rem !important; /* Adjust as needed */
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+.accordion-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important; /* Adds spacing between accordion items */
+    width: 100% !important; /* Ensures accordion items span the container width */
+}
+
+.aux-accordion {
+    width: 100% !important;
+    max-width: 800px !important; /* Optional: Aligns with the group's max width */
+    text-align: left !important; /* Aligns accordion text to the left */
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;
+    padding: 10px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.aux-accordion h3 {
+    margin: 0 !important;
+}
+
+.aux-accordion button {
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+    padding: 10px !important;
+    text-align: left !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+
+.aux-accordion-panel {
+    margin-top: 10px !important;
+    padding: 10px !important;
+    border-top: 1px solid #ddd !important;
+    font-size: 0.9rem !important;
+}
+
+/* Modal content font fix (like errors) */
+.modal-content {
+    font-family: 'Work Sans', sans-serif !important;
+}
+
+/* Style button on modal error menu */
+button.confirm.button {
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem; /* Adjust font size for consistency */
+    width: 185px;
+    height: 40px;
+    padding: 0; /* Remove padding */
+    background-color: #500000 !important; /* Button background color */
+    color: #ffffff; /* White text color */
+    border-radius: 0; /* Remove rounded corners */
+    border: none; /* No border */
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    cursor: pointer;
+
+}
+button.confirm.button:hover {
+    background-color: #360000 !important; /* Darker color on hover */
+}
+
+/* Hide by default the stock level display, make visible via javascript on stock tracked items under a certain number */
+.form-field.form-field--stock {
+    visibility: hidden;
+}
+
+/* Changing position around "add to cart" button on product pages */
+.form-field.form-field--increments {
+    margin-bottom: 0;
+}
+
+
+/* Re-enable all (tab) outling on site for accessability and set the color */
+/* Show outline for keyboard navigation */
+[contenteditable=true]:focus-visible, 
+[href]:focus-visible, 
+[tabindex]:not([tabindex="-1"]):focus-visible, 
+button:focus-visible, 
+details:focus-visible, 
+input:focus-visible, 
+select:focus-visible, 
+textarea:focus-visible {
+    outline: 2px solid #4b71fc !important; /* Customize the outline style as needed */
+    outline-offset: 4px !important; /* Add spacing between the outline and the element */
+}
+/* Remove outline for mouse interactions */
+[contenteditable=true]:focus:not(:focus-visible), 
+[href]:focus:not(:focus-visible), 
+[tabindex]:not([tabindex="-1"]):focus:not(:focus-visible), 
+button:focus:not(:focus-visible), 
+details:focus:not(:focus-visible), 
+input:focus:not(:focus-visible), 
+select:focus:not(:focus-visible), 
+textarea:focus:not(:focus-visible) {
+    outline: none !important; /* No outline for mouse click interactions */
+}
+
+
+
+
+
+#contact-us-success {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14pt;
+    text-align: center;
+    margin: 20px auto;
+    line-height: 1.5;
+    width: 80%; /* Optional: Adjust width as needed for better centering */
+}
+
+#contact-us-success a {
+    text-decoration: underline;
+    color: inherit; /* Keeps the link color consistent with the rest of the text */
+}
+
+
+
+//login.html button css
+
+.loginSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loginButton {
+    padding-top: 7px;
+    padding-right: 24px;
+    padding-bottom: 7px;
+    padding-left: 24px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+// Remove "skip to main" link on mobile mode
+@media (max-width: 800px) {
+    
+    .skip-to-main-link {
+        visibility: hidden !important;
+    }
+    
+    
+    
+}
+
+// Remove bottom margin on carousel
+.bc-carousel-container-542e44aa-bb7f-409e-ac1c-ac584680dae1 {
+    margin-bottom: 0 !important;
+}
+
+
+
+
+
+// Remove "edit" button visibility from account addresses page
+a.button.button--primary.button--small[href^="/account.php?action=edit_shipping_address"] {
+    display: none !important;
+}
+
+
+
+
+@media (min-width: 801px) {
+
+// Shift order container to the right in the "account" section
+.account-content--fixedSmall {
+    
+    
+position: relative; /* Ensure relative positioning if not already set */
+left: 20px; /* Shifts the container 20px to the right */
+
+
+
+}
+
+}
+
+// sets correct font and colors for product widget names on home page at all scaling levels
+div[data-test-id="product-widget-name"] a {
+        font-size: 125% !important; /* Increases the size of the font of item names on the home page select products widget */
+        font-family: 'Oswald';
+        font-weight: 300;
+        color: #500000;
+    }
+
+
+// Disable carrot drop down indicator icons which were inverted on mobile hamburger menu, in mobile mode
+@media (max-width: 800px) {
+.icon.navPages-action-moreIcon {
+    display: none; /* Completely removes the element from the layout */
+}
+}
+
+
+// Hides product image arrow selection element (added with javascript) when in mobile mode
+@media only screen and (max-width: 800px) {
+    .arrows-container {
+        display: none !important; /* Hide arrows container on mobile */
+    }
+}
+
+
+
+// Fixed issue with margin below "continue shopping" button that appears after adding to cart in mobile mode
+@media (max-width: 800px) {
+.button.button--primary[data-reveal-close] {
+    margin-bottom: 0px;
+}
+}
+// Force remove the "SKU" label on the product pages that appears when you change variant product options
+dt.productView-info-name.sku-label {
+    display: none !important;
+}
+
+
+
+
+
+
+
+a.smbdg_item.smbdg_item_lnk.smbdg_4183.smbdg_position3 {
+    text-decoration: none !important;
+}
+
+
+

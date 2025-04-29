@@ -46,10 +46,10 @@
             <div class="form-action">
                 <input
                         id="form-action-addToCart"
-                        data-wait-message="{{lang 'products.adding_to_cart'}}"
+                        data-wait-message="{{#if customer}}{{#if customer.customer_group_id '==' 10}}Adding to quote...{{else}}{{lang 'products.adding_to_cart'}}{{/if}}{{else}}Adding to quote...{{/if}}"
                         class="button button--primary"
                         type="submit"
-                        value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
+                        value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{#if customer}}{{#if customer.customer_group_id '==' 10}}{{lang 'products.add_to_quote'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}{{else}}{{lang 'products.add_to_quote'}}{{/if}}{{/if}}"
                 >
                 <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
             </div>

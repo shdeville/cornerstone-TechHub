@@ -379,3 +379,82 @@ $optimizedCheckout-input--error-boxShadow: 0 0 3px transparentize(stencilColor("
     background-color: stencilColor("optimizedCheckout-loadingToaster-backgroundColor");
     color: stencilColor("optimizedCheckout-loadingToaster-textColor");
 }
+
+
+
+
+// Checkout header styling start
+
+
+
+.checkoutHeader.optimizedCheckout-header {
+    background-color: #500000 !important; /* Applies maroon background to the whole header */
+    width: 100%; /* Ensures it spans the full width of the page */
+    padding: 0; /* Reset any padding */
+    margin: 0; /* Reset any margin */
+}
+.checkoutHeader {
+    background-color: #500000; /* Ensures the header is maroon */
+    padding: 0; /* Resets any padding */
+    margin: 0;  /* Resets any margin */
+    width: 100%; /* Ensures it spans the entire width */
+}
+
+.checkoutHeader-content {
+    background-color: #500000 !important; /* Ensures the content is maroon */
+    width: 100%; /* Spans the full width of the parent */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+}
+
+.checkoutHeader-logo {
+    max-height: 65px;
+    width: auto; /* Scales proportionally */
+
+}
+
+
+
+// Checkout header styling end
+
+
+
+//Ported over CSS from prod
+
+//Removes the coupon/gift certificate buttons from checkout
+
+a.redeemable-label {display:none;}
+
+//Removes taxes from checkout display
+div[data-test="cart-taxes"] {
+    display: none;
+}
+
+//Testing removing Billing section and checkbox for Billing same as shipping
+
+#checkout-page-container > div > div > div > ol > li.checkout-step.optimizedCheckout-checkoutStep.checkout-step--shipping > div.checkout-view-content.checkout-view-content-enter-done > div > div > div:nth-child(2) > form > fieldset:nth-child(1) > div > div {display:none;}
+
+.checkout-step.optimizedCheckout-checkoutStep.checkout-step--billing {display: none;}
+
+#myButton > form {
+    font-size: 16px;
+    display: inline-block;
+    border: 2px solid #500000;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.myHeaderClass {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+//End Prod CSS section
+
+
+//Order Confirmation page - hide the confirmation messag
+
+p[data-test="order-confirmation-order-status-text"] {
+    display: none;
+}

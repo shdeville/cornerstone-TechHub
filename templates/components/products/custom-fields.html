@@ -1,4 +1,6 @@
 {{#each product.custom_fields}}
-<dt class="productView-info-name">{{name}}:</dt>
-<dd class="productView-info-value">{{{value}}}</dd>
+<div class="productView-info-container">
+  <span class="productView-info-name">{{name}}:</span>
+  <span class="productView-info-value">{{{value}}}</span>
+</div>
 {{/each}}

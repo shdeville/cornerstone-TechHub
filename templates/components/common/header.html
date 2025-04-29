@@ -1,4 +1,100 @@
 <a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+
+
+<div class="aux-container">
+  <div class="aux-components5">
+    <span class="alert" role="alert">
+      <p><strong>Howdy! You are logged in to TechHub as a Guest.</strong><br>Guests can build quotes to send to approved purchasers, but only approved purchasers can complete an order in TechHub. Contact your local IT team with questions.</p>
+    </span>
+  </div>
+</div>
+
+
+<!-- CSS for guest banner at different window widths -->
+{{#unless customer.customer_group_id '==' 10}}
+    <style>
+        @media only screen and (min-width: 801px){
+            
+            .aux-container {
+                display: none;
+            }
+            
+            .header{
+                top:0px;
+            }
+            
+            body {
+                padding-top: 120px;
+            }
+        }
+        
+        @media only screen and (max-width: 800px){
+            
+            .aux-container {
+                display: none;
+            }
+            
+            .header{
+                top:0px;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+        }
+        
+    </style>
+{{/unless}}
+
+{{#if customer.customer_group_id '==' 10}}
+
+    <style>
+
+        @media only screen and (min-width: 588px){
+            .header{
+                top:62px;
+            }
+            
+            body {
+                padding-top: 180px;
+            }
+        }
+        
+        @media only screen and (min-width: 801px){
+            .header{
+                top:62px;
+            }
+            
+            body {
+                padding-top: 180px;
+            }
+        }
+        
+        @media only screen and (min-width: 1096px){
+            .header{
+                top:40px;
+            }
+            
+            body {
+                padding-top: 160px;
+            }
+        }
+        
+        @media only screen and (max-width: 587px){
+            .header{
+                top:84px;
+            }
+            
+            body {
+                padding-top: 180px;
+            }
+        }
+        
+    </style>
+{{/if}}
+<!-- Guest Banner CSS end -->
+
+
 {{#if banners.top}}
 <div class="banners" data-banner-location="top">
     {{#each (limit banners.top_metadata 1)}}
@@ -14,7 +110,8 @@
     <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
         <span class="mobileMenu-toggleIcon">Toggle menu</span>
     </a>
-    {{> components/common/navigation}}
+    
+    <div class="header-content">
 
     {{#if page_type '===' 'default'}}
         <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
@@ -25,6 +122,14 @@
             {{> components/common/store-logo}}
         </div>
     {{/if}}
+    
+        
+        {{> components/common/quick-search}}
+
+        
+        {{> components/common/navigation}}
+    </div>
+    <!--Original nav/header code here-->
     <div class="navPages-container" id="menu" data-menu>
         {{> components/common/navigation-menu}}
     </div>

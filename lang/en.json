@@ -37,17 +37,19 @@
         "title": "Checkout"
     },
     "cart": {
-        "nav_aria_label": "Cart with 0 items",
+        "nav_aria_label": "Cart link",
+        "quote_nav_aria_label": "Quote link",
         "continue_shopping": "Click here to continue shopping",
         "login_to_checkout": "Login to proceed to checkout",
         "items": "{NUM, plural, =0{(0 items)} one {(# item)} other {(# items)}}",
         "checkout": {
             "address": {
-                "multiple": "check out with multiple addresses",
+                "multiple": "checkout with multiple addresses",
                 "or": "or"
             },
-            "button": "Check out",
+            "button": "Checkout",
             "empty_cart": "Your cart is empty",
+            "empty_quote": "Your quote is empty",
             "title": "Click here to proceed to checkout",
             "item": "Item",
             "price": "Price",
@@ -62,12 +64,15 @@
             "update": "Update shipping cost"
         },
         "preview": {
-            "checkout_now": "Check out now",
-            "checkout_multiple": "or check out with multiple addresses",
-            "view_cart": "View Cart"
+            "checkout_now": "Checkout now",
+            "checkout_multiple": "or checkout with multiple addresses",
+            "view_cart": "View Cart",
+            "view_quote": "View Quote"
         },
         "label": "Your Cart ({quantity, plural, one {# item} other {# items}})",
+        "quote_label": "Your Quote ({quantity, plural, one {# item} other {# items}})",
         "is_empty": "Your cart is empty",
+        "quote_is_empty": "Your quote is empty",
         "invalid_entry_message": "[ENTRY] is not a valid entry",
         "coupon_code": "Coupon Code",
         "discount": "Discount",
@@ -77,6 +82,7 @@
         "reconfigure_product": "Configure '{name}'",
         "shipping_peritem": "Per Item Shipping",
         "remove_item": "Remove {name} from cart",
+        "quote_remove_item": "Remove {name} from quote",
         "confirm_delete": "Are you sure you want to delete this item?",
         "coupons": {
             "apply_coupon": "Apply coupon",
@@ -128,12 +134,15 @@
             "preview": "Preview"
         },
         "added_to_cart": {
-            "what_next": "Ok, {num_products, plural, one {1 item was} other {# items were}} added to your cart. What's next?",
+            "what_next": "ITEMS(S) ADDED TO YOUR CART",
+            "quote_what_next": "ITEMS(S) ADDED TO YOUR QUOTE",
             "your_cart_contains": "Your cart contains {num_products, plural, one {1 item} other {# items}}",
+            "your_quote_contains": "Your quote contains {num_products, plural, one {1 item} other {# items}}",
             "proceed_to_checkout": "Proceed to checkout",
             "order_subtotal": "Order subtotal",
             "continue_shopping": "Continue Shopping",
-            "view_or_edit_cart": "View or edit your cart",
+            "view_or_edit_cart": "View cart or Checkout",
+            "view_or_edit_quote": "View quote",
             "you_might_also_like": "You may also like"
         }
     },
@@ -166,11 +175,12 @@
         "compare": "Compare",
         "change": "Change",
         "sign_up": "Register",
-        "login": "Sign in",
+        "login": "Sign In",
         "login_for_pricing": "Log in for pricing",
         "logout": "Sign out",
         "account": "Account",
         "cart": "Cart",
+        "quote": "Quote",
         "search": "Search",
         "gift_cert": "Gift Certificates",
         "save": "Save",
@@ -196,8 +206,8 @@
             "alpha_asc": "A to Z",
             "alpha_desc": "Z to A",
             "reviews": "By Review",
-            "price_asc": "Price: Ascending",
-            "price_desc": "Price: Descending"
+            "price_asc": "Price: Low - High",
+            "price_desc": "Price: High - Low"
         },
         "loading": "Loading",
         "month": "Month",
@@ -224,6 +234,7 @@
         "remove": "Remove",
         "no_remove": "At least 2 products are needed to make a valid comparison.",
         "add_to_cart": "Add to cart",
+        "add_to_quote": "Add to quote",
         "no_compare": "You must select at least two products to compare"
     },
     "category": {
@@ -280,7 +291,7 @@
         "new_customer": {
             "heading": "New Customer?",
             "intro": "Create an account with us and you'll be able to:",
-            "fact1": "Check out faster",
+            "fact1": "Checkout faster",
             "fact2": "Save multiple shipping addresses",
             "fact3": "Access your order history",
             "fact4": "Track new orders",
@@ -766,6 +777,7 @@
             "show": "Show Videos"
         },
         "add_to_cart": "Add to Cart",
+        "add_to_quote": "Add to Quote",
         "adding_to_cart": "Adding to cart…",
         "options": "Options",
         "none": "None",

@@ -62,7 +62,16 @@
             </li>
         {{/if}}
         <li class="navUser-item navUser-item--account">
+            <!--change account in nav based on group-->
             {{#if customer}}
+                {{#if customer.customer_group_id '==' 10}}
+                    <a class="navUser-action"
+                       href="{{urls.auth.logout}}"
+                       aria-label="{{lang 'common.logout'}}"
+                    >
+                        {{lang 'common.logout'}}
+                    </a>
+                {{else}}
                 <a class="navUser-action"
                    href="{{urls.account.index}}"
                    aria-label="{{lang 'common.account'}}"
@@ -75,18 +84,21 @@
                 >
                     {{lang 'common.logout'}}
                 </a>
+                {{/if}}
+
             {{else}}
                 <a class="navUser-action"
-                   href="{{urls.auth.login}}"
+                   href="https://tamu.xecurify.com/moas/broker/login/jwt/322830?client_id=avf77jyj03e4enfj81wyn17p5iouj63&redirect_uri=https://tamu.mybigcommerce.com/login/token/"
                    aria-label="{{lang 'common.login'}}"
                 >
                     {{lang 'common.login'}}
                 </a>
                 {{#if settings.account_creation_enabled}}
-                    <span class="navUser-or">{{lang 'common.or'}}</span>
+                    <span class="navUser-or" style="display: none;">{{lang 'common.or'}}</span>
                     <a class="navUser-action"
                        href="{{urls.auth.create_account}}"
                        aria-label="{{lang 'common.sign_up'}}"
+                       style="display: none;"
                     >
                         {{lang 'common.sign_up'}}
                     </a>
@@ -94,6 +106,21 @@
             {{/if}}
         </li>
         <li class="navUser-item navUser-item--cart">
+            <!--Change cart to quote based on group id-->
+            {{#if customer}}
+                {{#if customer.customer_group_id '==' 10}}
+                    <a class="navUser-action"
+                       data-cart-preview
+                       data-dropdown="cart-preview-dropdown"
+                       data-options="align:right"
+                       href="{{urls.cart}}"
+                       aria-label="{{lang 'cart.quote_nav_aria_label'}}"
+                    >
+                        <span class="navUser-item-cartLabel">{{lang 'common.quote'}}</span>
+                        <span class="countPill cart-quantity"></span>
+                    </a>
+                    <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                {{else}}
             <a class="navUser-action"
                data-cart-preview
                data-dropdown="cart-preview-dropdown"
@@ -104,8 +131,22 @@
                 <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span>
                 <span class="countPill cart-quantity"></span>
             </a>
-
+                    <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                {{/if}}
+            {{else}}
+                <a class="navUser-action"
+                   data-cart-preview
+                   data-dropdown="cart-preview-dropdown"
+                   data-options="align:right"
+                   href="{{urls.cart}}"
+                   aria-label="{{lang 'cart.quote_nav_aria_label'}}"
+                >
+                    <span class="navUser-item-cartLabel">{{lang 'common.quote'}}</span>
+                    <span class="countPill cart-quantity"></span>
+                </a>
             <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            {{/if}}
+            
         </li>
     </ul>
     <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>

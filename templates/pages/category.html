@@ -1,7 +1,7 @@
 ---
 category:
     products:
-        limit: {{theme_settings.categorypage_products_per_page}}
+        limit: 999
 ---
 {{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
 {{#partial "head"}}
@@ -55,3 +55,40 @@ category:
 
 {{/partial}}
 {{> layout/base}}
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all checkboxes with the specific structure
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="products[]"]');
+
+    // Define the maximum number of checkboxes that can be checked
+    const maxChecked = 6;
+
+    // Add an event listener to each checkbox
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            // Count currently checked checkboxes
+            const checkedCount = document.querySelectorAll('input[type="checkbox"][name="products[]"]:checked').length;
+
+            if (checkedCount >= maxChecked) {
+                // Disable unchecked checkboxes if max is reached
+                checkboxes.forEach(box => {
+                    if (!box.checked) {
+                        box.disabled = true;
+                    }
+                });
+            } else {
+                // Enable all checkboxes if max is not reached
+                checkboxes.forEach(box => {
+                    box.disabled = false;
+                });
+            }
+        });
+    });
+});
+</script>

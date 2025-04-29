@@ -33,14 +33,7 @@
             </li>
         {{/each}}
     {{/if}}
-    {{#if cart.shipping_handling.show_estimator}}
-        <li class="cart-total">
-            <div class="cart-total-label">
-                <strong>{{lang 'cart.checkout.shipping'}}:</strong>
-            </div>
-            {{> components/cart/shipping-estimator cart.shipping_handling}}
-        </li>
-    {{/if}}
+    <!-- shipping calculator -->
     {{#each cart.taxes}}
         {{#unless included}}
             <li class="cart-total">
@@ -77,13 +70,7 @@
                 </div>
             </li>
         {{/each}}
-    {{else}}
-        <li class="cart-total">
-            <div class="cart-total-label">
-                <strong>{{lang 'cart.coupon_code'}}:</strong>
-            </div>
-            {{> components/cart/coupon-input}}
-        </li>
+        <!--coupon code section goes here-->
     {{/if}}
     {{#if settings.gift_certificates_enabled}}
         {{#each cart.gift_certificates}}

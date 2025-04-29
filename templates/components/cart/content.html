@@ -1,3 +1,6 @@
+<!--Script for quote builder functionality-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
 <table class="cart" data-cart-quantity="{{cart.quantity}}">
     <thead class="cart-header">
         <tr>
@@ -35,6 +38,10 @@
                     <h2 class="cart-item-name">
                         <a class="cart-item-name__label" href="{{url}}">{{name}}</a>
                     </h2>
+                    <!--Adding SKU to cart items-->
+                    <div class="cart-item-sku">
+                        {{sku}}
+                    </div>
                     {{#if release_date}}
                         <p>({{release_date}})</p>
                     {{/if}}

@@ -7,7 +7,7 @@ cart: true
 <div class="page">
 
     <div class="page-content" data-cart>
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <!--{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}-->
 
         {{> components/cart/page-title}}
 
@@ -31,14 +31,37 @@ cart: true
             {{#or customer (unless settings.hide_price_from_guests)}}
                 {{#if cart.show_primary_checkout_button}}
                     <div class="cart-actions cart-content-padding-right">
+                        {{#if customer}}
+                        
+                            {{#if customer.customer_group_id '==' '10'}}
+                                <!--code for quote button-->
+                                <div id="quote_button">
+                                    <button class="button button--primary" id="generate-quote">Save Quote as PDF</button>
+                                </div>
+                            {{else}}
+                                <div class='checkout_container'>
                         <a
                             class="button button--primary"
+                                        id="checkout-button"
                             href="{{urls.checkout.single_address}}"
                             title="{{lang 'cart.checkout.title'}}"
                             data-primary-checkout-now-action
                         >
                             {{lang 'cart.checkout.button'}}
                         </a>
+                                    
+                                    <!--Link to save quote beneath checkout button-->
+                                    <div id="quote_fake_link">
+                                        <a tabindex="0" class="fake-link" id="generate-quote">Save Cart as PDF</a>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        {{else}}
+                            <!--code for quote button-->
+                            <div id="quote_button">
+                                <button class="button button--primary" id="generate-quote">Save Quote as PDF</button>
+                            </div>
+                        {{/if}}
                         {{#if cart.show_multiple_address_shipping}}
                             <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
                                 {{lang 'cart.preview.checkout_multiple'}}
@@ -63,7 +86,17 @@ cart: true
             {{/or}}
 
         {{else}}
-            <h3 tabindex="0">{{lang 'cart.checkout.empty_cart'}}</h3>
+        
+            {{#if customer}}
+                {{#if customer_group_id '==' '10'}}
+                    <h3 tabindex="0">{{lang 'cart.checkout.empty_quote'}}</h3>
+                {{else}}
+                    <h3 tabindex="0">{{lang 'cart.checkout.empty_cart'}}</h3>
+                {{/if}}
+            {{else}}
+                <h3 tabindex="0">{{lang 'cart.checkout.empty_quote'}}</h3>
+            {{/if}}
+                
         {{/if}}
 
     </div>
