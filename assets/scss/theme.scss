@@ -756,7 +756,10 @@
     
     .css-lnidq9.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-0.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
     .css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-1.css-1grt43l p,
-    .css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-2.css-1grt43l p {
+    .css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-2.css-1grt43l p,
+    .css-lnidq9.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-0.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
+    .css-133evk2.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-1.css-1grt43l p,
+    .css-133evk2.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-2.css-1grt43l p {
         font-family: 'Work Sans', sans-serif;
         font-weight: 900;
         color: #500000; /* Maroon color */
@@ -767,7 +770,10 @@
     
     .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-0.css-1grt43l p, /* Changing the font of the carousel button  */
     .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-1.css-1grt43l p,
-    .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-2.css-1grt43l p {
+    .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-2.css-1grt43l p,
+    .css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-0.css-1grt43l p, /* Changing the font of the carousel button  */
+    .css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-1.css-1grt43l p,
+    .css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-2.css-1grt43l p {
         font-family: 'Work Sans', sans-serif;
         font-weight: 600;
         font-size: 65%;
@@ -776,16 +782,23 @@
     
     .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-0.css-1grt43l p, /* Changing the font of the carousel sub text  */
     .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-1.css-1grt43l p,
-    .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-2.css-1grt43l p {
+    .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-2.css-1grt43l p,
+    .css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-0.css-1grt43l p, /* Changing the font of the carousel sub text  */
+    .css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-1.css-1grt43l p,
+    .css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-2.css-1grt43l p {
         font-family: 'Open Sans', sans-serif;
         font-size: 85%; /*   font size */
     }
     
-    
+        /* CUSTOMIZATION FOR CATEGORY LINKS  ON HOMEPAGE */
     div[data-widget-id="5511b91e-881f-4e25-ae4a-60c42420fe67"] .centered-link,
     div[data-widget-id="ba9beffb-0d80-4228-8fba-2add4745502f"] .centered-link,
     div[data-widget-id="8c68f3e3-1c65-40e6-8cb9-de03f96b3f4f"] .centered-link,
-    div[data-widget-id="1401f77c-be99-4945-9374-a4a4f9a5cc55"] .centered-link {
+    div[data-widget-id="1401f77c-be99-4945-9374-a4a4f9a5cc55"] .centered-link,
+    div[data-widget-id="61b13930-e6ca-42cb-815c-8b0e2b2952ca"] .centered-link,   
+    div[data-widget-id="c73e4e1f-3257-4f22-be74-6e465331603a"] .centered-link,   
+    div[data-widget-id="e9f9c50d-641e-416b-a574-bc0cb0a8d025"] .centered-link,   
+    div[data-widget-id="ade63e7f-3cbd-4c47-b2f1-5d6ef93199a2"] .centered-link { 
         font-family: 'Work Sans', sans-serif;
         font-weight: 700; /* Set weight to 700 */
         color: #500000;
@@ -1381,11 +1394,24 @@
 
 .css-lnidq9.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-0.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
 .css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-1.css-1grt43l p,
-.css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-2.css-1grt43l p {
+.css-133evk2.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayTitle-2.css-1grt43l p,
+.css-lnidq9.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-1.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
+.css-133evk2.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-2.css-1grt43l p,
+.css-133evk2.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-3.css-1grt43l p {
     font-family: 'Work Sans', sans-serif;
 	font-weight: 900;
+    color: #500000; /* Maroon color */
+    font-size: 140%;
 }
 
+.css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-1.css-1grt43l p, /* Changing the font of the carousel button  */
+.css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-2.css-1grt43l p,
+.css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-3.css-1grt43l p {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            font-size: 65%;
+            
+}
 
 .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-0.css-1grt43l p, /* Changing the font of the carousel button  */
 .css-skxhj7 .content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displayButtonText-1.css-1grt43l p,
@@ -1395,20 +1421,55 @@
 
 }
 
+.css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-1.css-1grt43l p, /* Changing the font of the carousel sub text  */
+.css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-2.css-1grt43l p,
+.css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-3.css-1grt43l p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 85%; /*   font size */
+            
+}
+
+.css-lnidq9.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-2.css-1grt43l.custom p,  /* Changing the font and color of the carousel header  */
+.css-133evk2.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-3.css-1grt43l p,
+.css-133evk2.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayTitle-4.css-1grt43l p {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 900;
+            color: #500000; /* Maroon color */
+            font-size: 140%;
+}
+
+.css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-2.css-1grt43l p, /* Changing the font of the carousel button  */
+.css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-3.css-1grt43l p,
+.css-skxhj7 .content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displayButtonText-4.css-1grt43l p {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            font-size: 65%;
+            
+}
+
+
 
 .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-0.css-1grt43l p, /* Changing the font of the carousel sub text  */
 .css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-1.css-1grt43l p,
-.css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-2.css-1grt43l p {
+.css-15x934e.content-editable-542e44aa-bb7f-409e-ac1c-ac584680dae1-displaySubtitle-2.css-1grt43l p,
+.css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-2.css-1grt43l p, /* Changing the font of the carousel sub text  */
+.css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-3.css-1grt43l p,
+.css-15x934e.content-editable-5859ca70-1656-4246-bf48-68cbbc762662-displaySubtitle-4.css-1grt43l p {
     font-family: 'Open Sans', sans-serif;
     font-size: 85%; /*   font size */
 }
 
 
+/* CUSTOMIZATION FOR CATEGORY LINKS  ON HOMEPAGE */
 
 div[data-widget-id="5511b91e-881f-4e25-ae4a-60c42420fe67"] .centered-link,
 div[data-widget-id="ba9beffb-0d80-4228-8fba-2add4745502f"] .centered-link,
 div[data-widget-id="8c68f3e3-1c65-40e6-8cb9-de03f96b3f4f"] .centered-link,
-div[data-widget-id="1401f77c-be99-4945-9374-a4a4f9a5cc55"] .centered-link {
+div[data-widget-id="1401f77c-be99-4945-9374-a4a4f9a5cc55"] .centered-link,
+div[data-widget-id="61b13930-e6ca-42cb-815c-8b0e2b2952ca"] .centered-link,   
+div[data-widget-id="c73e4e1f-3257-4f22-be74-6e465331603a"] .centered-link,   
+div[data-widget-id="e9f9c50d-641e-416b-a574-bc0cb0a8d025"] .centered-link,   
+div[data-widget-id="ade63e7f-3cbd-4c47-b2f1-5d6ef93199a2"] .centered-link {  
     font-family: 'Work Sans', sans-serif;
     font-weight: 700; /* Set weight to 700 */
 }
@@ -1549,7 +1610,8 @@ label.form-label {
     display: none;
 }
 
-#bc-carousel-container-542e44aa-bb7f-409e-ac1c-ac584680dae1 {
+#bc-carousel-container-542e44aa-bb7f-409e-ac1c-ac584680dae1,
+#bc-carousel-container-5859ca70-1656-4246-bf48-68cbbc762662 {
     display: none;
 }
 
@@ -2318,20 +2380,24 @@ body > footer > div.container{
 /* Disable home page icons and resources menu options (compatibility and vetting) for mobile */
 @media (max-width: 800px) {
 
-
-[data-widget-id="5475b4cf-0e2e-4df0-9df1-7f1b01d1e3c5"] {
+//Disables nav images for categories on home page in mobile view
+[data-widget-id="5475b4cf-0e2e-4df0-9df1-7f1b01d1e3c5"],
+[data-widget-id="908ad336-a0ed-485c-b84b-ab0624ce0457"] {
     display: none !important;
 }
 
-[data-widget-id="540417ea-4fd2-4dc2-9cf6-2d909e2e8753"] {
+[data-widget-id="540417ea-4fd2-4dc2-9cf6-2d909e2e8753"],
+[data-widget-id="4c4a9775-3ca7-4a3e-a538-4e061919c54e"] {
     display: none !important;
 }
 
-[data-widget-id="7ccd424f-5e84-4ba3-9998-ccb38191d06c"] {
+[data-widget-id="7ccd424f-5e84-4ba3-9998-ccb38191d06c"],
+[data-widget-id="1f634be8-1285-4e50-a82a-25698c506723"] {
     display: none !important;
 }
 
-[data-widget-id="1b9550b8-fa59-4b9f-972d-75b52079a79a"] {
+[data-widget-id="1b9550b8-fa59-4b9f-972d-75b52079a79a"],
+[data-widget-id="5dc528ad-9e12-4824-8739-ed43e9146510"] {
     display: none !important;
 }
 }
@@ -2577,7 +2643,8 @@ textarea:focus:not(:focus-visible) {
 }
 
 // Remove bottom margin on carousel
-.bc-carousel-container-542e44aa-bb7f-409e-ac1c-ac584680dae1 {
+.bc-carousel-container-542e44aa-bb7f-409e-ac1c-ac584680dae1,
+.bc-carousel-container-5859ca70-1656-4246-bf48-68cbbc762662 {
     margin-bottom: 0 !important;
 }
 
