@@ -21,6 +21,8 @@ Clone this repo and make sure all customizations made to your theme files are pr
 
 The TechHub customized theme files have the "Sign In" URL hardcoded in the navigation.html file. You will need to replace this with your store's SSO URL (this can be created via MiniOrange Application).
 
+A quote button (and link depending on login group) has been hardcoded in the cart.html page. This needs the quote_builder.js script in the Theme Enhancements and Features repo to work properly. This code displays a quote button for non-logged in users or group 10 users in lieu of a checkout button, and it adds a link beneath the normal checkout button that says "save quote as PDF" for other customers.
+
 The Lang files include changes for guests and quotes for non-logged in or guest users. The logic for displaying these assumes that all non-logged in users or users within group 10 are considered guests. If you need to change this verbage, you may do so in the en.lang file.
 Additionally a "guest banner" is hard coded into header.html, this banner will only appear for users within group 10. You can remove this code or simply not use customer group 10 if you don't want to have a guest banner appear.
 
