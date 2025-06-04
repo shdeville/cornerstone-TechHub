@@ -2644,3 +2644,8 @@ div[data-test-id="product-widget-name"] a {
 dt.productView-info-name.sku-label {
     display: none !important;
 }
+
+// Hide first item (intended for discontinued category) in header navigation list
+#left-nav > .navPages-item:nth-child(1) {
+    display: none !important;
+} 
