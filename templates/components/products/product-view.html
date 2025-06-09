@@ -283,3 +283,12 @@
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-header-title"></div>
     <div class="loadingOverlay"></div>
 </div>
+
+{{#eq product.price.without_tax.value 0}}
+  <style>
+    /* Hide anything with the “price” class when price = 0 */
+    .price {
+      display: none !important;
+    }
+  </style>
+{{/eq}}
