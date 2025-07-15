@@ -1,78 +1,163 @@
 <div id="modal-review-form" class="modal" data-reveal>
-    {{inject 'reviewRating' (lang 'forms.validate.reviews.rating')}}
-    {{inject 'reviewSubject' (lang 'forms.validate.reviews.title')}}
-    {{inject 'reviewName' (lang 'forms.validate.reviews.name')}}
-    {{inject 'reviewComment' (lang 'forms.validate.reviews.comment')}}
-    {{inject 'reviewEmail' (lang 'forms.validate.common.email_address')}}
     <div class="modal-header">
-        <h2 class="modal-header-title">{{lang 'products.reviews.write_a_review'}}</h2>
+        <h2 class="modal-header-title">Product Feedback</h2>
         {{> components/common/modal/modal-close-btn}}
     </div>
     <div class="modal-body">
-        <div class="writeReview-productDetails">
-            <div class="writeReview-productImage-container">
-                {{> components/common/responsive-img
-                    image=product.main_image
-                    fallback_size=theme_settings.product_size
-                    lazyload=theme_settings.lazyload_mode
-                    default_image=theme_settings.default_image_product
-                }}
+        <div id="form-container">
+            <div id="contact-us-page" class="page-content page-content--centered">
+                <form data-contact-form="" class="form" action="/pages.php?action=sendContactForm" method="post" id="feedback-form">
+                    <input type="hidden" name="page_id" id="page_id" value="42">
+                    
+                    <div class="form-row form-row--half">
+                        <div class="form-field">
+                            <label class="form-label" for="contact_fullname">Full Name</label>
+                            <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" value="">
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="contact_email">Email Address
+                                <small>Required</small>
+                            </label>
+                            <input class="form-input" type="text" id="contact_email" name="contact_email" value="">
+                        </div>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-label" for="contact_question">Comments/Questions
+                            <small>Required</small>
+                        </label>
+                        <textarea name="contact_question" id="contact_question" rows="5" cols="50" class="form-input"></textarea>
+                    </div>
+                    
+                    <div class="form-field">
+                        <div class="g-recaptcha" data-sitekey="6LcjX0sbAAAAACp92-MNpx66FT4pbIWh-FTDmkkz"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <input class="button button--primary" type="submit" value="Submit Form">
+                    </div>
+                </form>
             </div>
-            <h6 class="product-brand">{{ product.brand.name }}</h6>
-            <h5 class="product-title">{{ product.title }}</h5>
+            
+            <!-- Thank you message (hidden by default) -->
+            <div id="thank-you-message" style="display: none; text-align: center; padding: 40px; background: white;">
+                <h3 style="color: #333; margin-bottom: 15px;">Thank you for your feedback!</h3>
+                <p style="color: #666;">Your message has been submitted successfully.</p>
+            </div>
         </div>
-        <form class="form writeReview-form" action="{{ urls.product.post_review }}" method="post">
-            <fieldset class="form-fieldset">
-                <div class="form-field">
-                    <label class="form-label" for="rating-rate">{{lang 'products.reviews.rating_label'}}
-                        <small>{{lang 'common.required' }}</small>
-                    </label>
-                    <!-- Stars -->
-                    <!-- TODO: Review Stars need to be componentised, both for display and input -->
-                    <select id="rating-rate" class="form-select" name="revrating" data-input aria-required="true">
-                        <option value="">{{lang 'products.reviews.select_rating'}}</option>
-                        {{#for 1 5}}
-                            {{#if ../product.reviews.selected_rating '===' $index}}
-                                <option selected value="{{$index}}">{{lang (concat 'products.reviews.rating.' $index) }}</option>
-                            {{else}}
-                                <option value="{{$index}}">{{lang (concat 'products.reviews.rating.' $index) }}</option>
-                            {{/if}}
-                        {{/for}}
-                    </select>
-                </div>
-
-                <!-- Name -->
-                {{#if product.reviews.author}}
-                    {{> components/common/forms/text id="revfromname" name="revfromname" required="true" label=(lang 'products.reviews.form_write.name') value=product.reviews.author}}
-                {{else}}
-                    {{> components/common/forms/text id="revfromname" name="revfromname" required="true" label=(lang 'products.reviews.form_write.name') value=customer.name}}
-                {{/if}}
-
-                {{#if product.reviews.show_review_email}}
-                    <!-- Email -->
-                    {{#if product.reviews.email}}
-                        {{> components/common/forms/text id="email" name="email" required="true" label=(lang 'products.reviews.form_write.email') value=product.reviews.email}}
-                    {{else}}
-                        {{> components/common/forms/text id="email" name="email" required="true" label=(lang 'products.reviews.form_write.email') value=customer.email}}
-                    {{/if}}
-                {{/if}}
-
-                <!-- Review Subject -->
-                {{> components/common/forms/text id="revtitle" name="revtitle" required="true" label=(lang 'products.reviews.form_write.subject') value=product.reviews.title}}
-
-                <!-- Comments -->
-                {{> components/common/forms/multiline id="revtext" name="revtext" required="true" label=(lang 'products.reviews.form_write.comments') value=product.reviews.text}}
-
-                {{{product.reviews.recaptcha.markup}}}
-
-                <div class="form-field">
-                    <input type="submit" class="button button--primary"
-                           value="{{lang 'products.reviews.form_write.submit_value' }}">
-                </div>
-                <input type="hidden" name="product_id" value="{{ product.id }}">
-                <input type="hidden" name="action" value="post_review">
-                {{#if product.reviews.throttleToken}}<input type="hidden" name="throttleToken" value="{{product.reviews.throttleToken}}">{{/if}}
-            </fieldset>
-        </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const feedbackForm = document.getElementById('feedback-form');
+    
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the normal form submission
+            
+            // Validate required fields
+            const email = document.getElementById('contact_email').value.trim();
+            const comments = document.getElementById('contact_question').value.trim();
+            const recaptchaResponse = grecaptcha.getResponse();
+            
+            // Check email
+            if (!email) {
+                alert('Email is required');
+                return;
+            }
+            
+            // Check email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Check comments
+            if (!comments) {
+                alert('Comments/Questions field is required');
+                return;
+            }
+            
+            // Check reCAPTCHA
+            if (!recaptchaResponse) {
+                alert('Please complete the reCAPTCHA verification');
+                return;
+            }
+            
+            // Now proceed with existing functionality
+            const commentsField = document.getElementById('contact_question');
+            const currentValue = commentsField.value;
+            
+            // Find the product title and add it to comments
+            const productTitleElement = document.querySelector('.productView-title, h1.productView-title, .product-title, h1.product-title');
+            let productName = 'UNKNOWN PRODUCT';
+            
+            if (productTitleElement) {
+                productName = productTitleElement.textContent.trim();
+            }
+            
+            const feedbackText = 'PRODUCT FEEDBACK FOR ' + productName;
+            
+            if (!currentValue.startsWith('PRODUCT FEEDBACK FOR')) {
+                if (currentValue.trim() === '') {
+                    commentsField.value = feedbackText;
+                } else {
+                    commentsField.value = feedbackText + '\n\n' + currentValue;
+                }
+            }
+            
+            // Submit the form via AJAX
+            const formData = new FormData(feedbackForm);
+            
+            fetch('/pages.php?action=sendContactForm', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                // Hide the form container and show thank you message
+                const formContainer = document.getElementById('contact-us-page');
+                const thankYouMessage = document.getElementById('thank-you-message');
+                
+                if (formContainer) {
+                    formContainer.style.display = 'none';
+                }
+                if (thankYouMessage) {
+                    thankYouMessage.style.display = 'block';
+                }
+                
+                // After 3 seconds, click the close button and hide the review link
+                setTimeout(function() {
+                        // Remove the "Write a Review" link completely
+                        const reviewLink = document.querySelector('.productView-reviewLink--new, a[data-reveal-id="modal-review-form"]');
+                        if (reviewLink) {
+                            reviewLink.remove(); // Completely removes the element from DOM
+                        }
+                    
+                    // Click the close button
+                    const closeButton = document.querySelector('.modal-close, button.modal-close');
+                    if (closeButton) {
+                        closeButton.click();
+                    }
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show actual error to user
+                alert('Submission failed. Please check all fields and try again.');
+                
+                // Reset reCAPTCHA so they can try again
+                if (typeof grecaptcha !== 'undefined') {
+                    grecaptcha.reset();
+                }
+                
+                // Don't close the modal - let them try again
+            });
+        });
+    }
+});
+</script>
+
+<!-- reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
