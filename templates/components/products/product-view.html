@@ -38,9 +38,6 @@
         {{#if product.images.length '>' 1 }}
         {{> components/carousel-content-announcement}}
         {{/if}}
-
-        <div class="ARM4"></div>
-
         <figure class="productView-image"
                 data-image-gallery-main
                 {{#if product.main_image}}
@@ -66,10 +63,7 @@
                     </a>
                 {{/if}}
             </div>
-            
-            
         </figure>
-        <div class="discontinued_prod"></div>
         <ul class="productView-thumbnails"{{#gt product.images.length 5}} data-slick='{
                 "infinite": false,
                 "mobileFirst": true,
@@ -136,10 +130,18 @@
                         <span>{{lang 'products.reviews.link_to_review' total=product.num_reviews}}</span>
                     {{/if}}
                 {{/if}}
-
-{{!-- REMOVED WRITE A REVIEW BUTTON FROM HERE --}}
-
-
+                {{#if settings.show_product_reviews}}
+                    <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+                       class="productView-reviewLink productView-reviewLink--new"
+                       {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
+                       role="button"
+                    >
+                       {{lang 'products.reviews.new'}}
+                    </a>
+                    {{#unless is_ajax}}
+                        {{> components/products/modals/writeReview}}
+                    {{/unless}}
+                {{/if}}
             </div>
             {{product.detail_messages}}
             <dl class="productView-info">
@@ -219,25 +221,11 @@
                         {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
                     </div>
                 {{/if}}
+
                 {{#if theme_settings.show_custom_fields_tabs '!==' true}}
                     {{> components/products/custom-fields }}
                 {{/if}}
             </dl>
-            {{!-- Write review button moved here --}}
-            {{#if settings.show_product_reviews}}
-                <div class="form-action">
-                    <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                       class="button button--white"
-                       {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
-                       role="button"
-                    >
-                       Submit Feedback
-                    </a>
-                </div>
-                {{#unless is_ajax}}
-                    {{> components/products/modals/writeReview}}
-                {{/unless}}
-            {{/if}}
         </div>
     </section>
 
@@ -304,6 +292,3 @@
     }
   </style>
 {{/eq}}
-
-
-
