@@ -1,29 +1,146 @@
-# TechHub Cornerstone Theme v6.16.1
+# Cornerstone
+![tests](https://github.com/bigcommerce/cornerstone/workflows/Theme%20Bundling%20Test/badge.svg?branch=master)
 
-These are the custom theme files used for the TechHub BigCommerce website, built on top of Cornerstone v6.16.1
+Stencil's Cornerstone theme is the building block for BigCommerce theme developers to get started quickly developing premium quality themes on the BigCommerce platform.
 
-Please follow the Stencil development guides found at these links for general development and packaging instructions - 
-* Installing Stencil: https://developer.bigcommerce.com/docs/storefront/stencil/cli/install
-* Live Previewing a Theme: https://developer.bigcommerce.com/docs/storefront/stencil/cli/development-server
-* Stencil CLI Options and Commands: https://developer.bigcommerce.com/docs/storefront/stencil/cli/options-and-commands
+### Stencil Utils
+[Stencil-utils](https://github.com/bigcommerce/stencil-utils) is our supporting library for our events and remote interactions.
 
-# You May Also Need -
+## JS API
+When writing theme JavaScript (JS) there is an API in place for running JS on a per page basis. To properly write JS for your theme, the following page types are available to you:
 
-* TechHub Theme Enhancements and Features: https://github.com/shdeville/TechHub-Theme-Enhancement-and-Features
-* TechHub Checkout Scripts: https://github.com/shdeville/Checkout-Scripts
-* TechHub One Page Checkout: https://github.com/ehansontamu/One-Page-Checkout-TechHub
+* "pages/account/addresses"
+* "pages/account/add-address"
+* "pages/account/add-return"
+* "pages/account/add-wishlist"
+* "pages/account/recent-items"
+* "pages/account/download-item"
+* "pages/account/edit"
+* "pages/account/return-saved"
+* "pages/account/returns"
+* "pages/account/payment-methods"
+* "pages/auth/login"
+* "pages/auth/account-created"
+* "pages/auth/create-account"
+* "pages/auth/new-password"
+* "pages/blog"
+* "pages/blog-post"
+* "pages/brand"
+* "pages/brands"
+* "pages/cart"
+* "pages/category"
+* "pages/compare"
+* "pages/errors"
+* "pages/gift-certificate/purchase"
+* "pages/gift-certificate/balance"
+* "pages/gift-certificate/redeem"
+* "global"
+* "pages/home"
+* "pages/order-complete"
+* "pages/page"
+* "pages/product"
+* "pages/search"
+* "pages/sitemap"
+* "pages/subscribed"
+* "pages/account/wishlist-details"
+* "pages/account/wishlists"
 
-# How to Start -
+These page types will correspond to the pages within your theme. Each one of these page types map to an ES6 module that extends the base `PageManager` abstract class.
 
-Clone this repo and make sure all customizations made to your theme files are properly outlined in your commits. Make note of all files that you make changes to, and leave comments/documentation for each change.
+```javascript
+    export default class Auth extends PageManager {
+        constructor() {
+            // Set up code goes here; attach to internals and use internals as you would 'this'
+        }
+    }
+```
 
-# Changes You'll Need to Make -
+### JS Template Context Injection
+Occasionally you may need to use dynamic data from the template context within your client-side theme application code.
 
-The TechHub customized theme files have the "Sign In" URL hardcoded in the navigation.html file. You will need to replace this with your store's SSO URL (this can be created via MiniOrange Application).
+Two helpers are provided to help achieve this.
 
-A quote button (and link depending on login group) has been hardcoded in the cart.html page. This needs the quote_builder.js script in the Theme Enhancements and Features repo to work properly. This code displays a quote button for non-logged in users or group 10 users in lieu of a checkout button, and it adds a link beneath the normal checkout button that says "save quote as PDF" for other customers.
+The inject helper allows you to compose a JSON object with a subset of the template context to be sent to the browser.
 
-The Lang files include changes for guests and quotes for non-logged in or guest users. The logic for displaying these assumes that all non-logged in users or users within group 10 are considered guests. If you need to change this verbage, you may do so in the en.lang file.
-Additionally a "guest banner" is hard coded into header.html, this banner will only appear for users within group 10. You can remove this code or simply not use customer group 10 if you don't want to have a guest banner appear.
+```
+{{inject "stringBasedKey" contextValue}}
+```
 
-CSS for some pagebuilder elements will be specific to each instance, so some CSS configuration will be needed for your store. This can be done in the theme.scss file.
+To retrieve the parsable JSON object, just call `{{jsContext}}` after all of the `{{@inject}}` calls.
+
+For example, to setup the product name in your client-side app, you can do the following if you're in the context of a product:
+
+```html
+{{inject "myProductName" product.title}}
+
+<script>
+// Note the lack of quotes around the jsContext handlebars helper, it becomes a string automatically.
+var jsContext = JSON.parse({{jsContext}}); // jsContext would output "{\"myProductName\": \"Sample Product\"}" which can feed directly into your JavaScript
+
+console.log(jsContext.myProductName); // Will output: Sample Product
+</script>
+```
+
+You can compose your JSON object across multiple pages to create a different set of client-side data depending on the currently loaded template context.
+
+The stencil theme makes the jsContext available on both the active page scoped and global PageManager objects as `this.context`.
+
+## Polyfilling via Feature Detection
+Cornerstone implements [this strategy](https://philipwalton.com/articles/loading-polyfills-only-when-needed/) for polyfilling.
+
+In `templates/components/common/polyfill-script.html` there is a simple feature detection script which can be extended to detect any recent JS features you intend to use in your theme code.
+
+If any one of the conditions is not met, an additional blocking JS bundle configured in `assets/js/polyfills.js` will be loaded to polyfill modern JS features before the main bundle executes. 
+
+This intentionally prioritizes the experience of the 90%+ of shoppers who are on modern browsers in terms of performance, while maintaining compatibility (at the expense of additional JS download+parse for the polyfills) for users on legacy browsers.
+
+## Static assets
+Some static assets in the Stencil theme are handled with Grunt if required. This
+means you have some dependencies on grunt and npm. To get started:
+
+First make sure you have Grunt installed globally on your machine:
+
+```
+npm install -g grunt-cli
+```
+
+and run:
+
+```
+npm install
+```
+
+Note: package-lock.json file was generated by Node version 20 and npm version 10. The app supports Node 20 as well as multiple versions of npm, but we should always use those versions when updating package-lock.json, unless it is decided to upgrade those, and in this case the readme should be updated as well. If using a different version for node OR npm, please delete the package-lock.json file prior to installing node packages and also prior to pushing to github.
+
+If updating or adding a dependency, please double check that you are working on Node version 20 and npm version 10 and run ```npm update <package_name>```  or ```npm install <package_name>``` (avoid running npm install for updating a package). After updating the package, please make sure that the changes in the package-lock.json reflect only the updated/new package prior to pushing the changes to github.
+
+
+### Icons
+Icons are delivered via a single SVG sprite, which is embedded on the page in
+`templates/layout/base.html`. It is generated via a grunt task `grunt svgstore`.
+
+The task takes individual SVG files for each icon in `assets/icons` and bundles
+them together, to be inlined on the top of the theme, via an ajax call managed
+by svg-injector. Each icon can then be called in a similar way to an inline image via:
+
+```
+<svg><use xlink:href="#icon-svgFileName" /></svg>
+```
+
+The ID of the SVG icon you are calling is based on the filename of the icon you want,
+with `icon-` prepended. e.g. `xlink:href="#icon-facebook"`.
+
+Simply add your new icon SVG file to the icons folder, and run `grunt svgstore`,
+or just `grunt`.
+
+#### License
+
+(The MIT License)
+Copyright (C) 2015-present BigCommerce Inc.
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

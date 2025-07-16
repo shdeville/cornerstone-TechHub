@@ -2663,3 +2663,31 @@ dt.productView-info-name.sku-label {
     font-weight: 600 !important;
     font-size: 65% !important;
 }
+
+/* MAKING A WHITE BUTTON -  higher specificity */
+.form-action .button.button--white,
+a.button.button--white {
+    font-family: 'Work Sans', sans-serif !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 9pt !important;
+    width: 185px;
+    height: 40px;
+    padding: 0 5px !important; /* Remove vertical padding */
+    box-sizing: border-box;
+    background-color: #ffffff !important; /* Set button color */
+    color: #000000 !important; /* Set text color to black for contrast */
+    border-radius: 0 !important; /* Remove rounded corners */
+    border: 1px solid #000000 !important; /* 2px solid black border */
+    display: inline-block !important; /* Ensure the link behaves like a button */
+    text-align: center !important; /* Center the text inside the button */
+    line-height: 40px !important; /* Match the height for perfect vertical centering */
+    text-decoration: none !important; /* Remove underline from link */
+    transition: background-color 0.3s ease; /* Add transition for a smooth hover effect */
+}
+
+.form-action .button.button--white:hover,
+a.button.button--white:hover {
+    background-color: #f0f0f0 !important; /* Light gray on hover */
+    color: #000000 !important;
+}
