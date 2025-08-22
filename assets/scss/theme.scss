@@ -2694,3 +2694,134 @@ a.button.button--white:hover {
     background-color: #f0f0f0 !important; /* Light gray on hover */
     color: #000000 !important;
 }
+
+/* Data & Methodology modules (scoped to About page layout) */
+.about-main-content .about-module {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #500000; /* Aggie maroon */
+  border-radius: 14px;
+  padding: 18px 18px 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  margin: 18px 0;
+}
+
+.about-main-content .about-eyebrow {
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0 0 8px 0;
+}
+
+.about-main-content .about-module-title {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+}
+
+/* Collapsible blocks */
+.about-main-content details.about-details {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-top: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.about-main-content summary.about-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 14px;
+  background: #f9fafb;
+  font-weight: 600;
+}
+.about-main-content summary.about-summary::-webkit-details-marker { display: none; }
+.about-main-content .about-details-content {
+  padding: 12px 14px 14px;
+  background: #fff;
+}
+
+/* Formula block + definitions */
+.about-main-content .about-formula {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: #0b1020;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  overflow: auto;
+}
+.about-main-content .about-vars {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 8px;
+  margin: 10px 0;
+}
+@media (max-width: 700px){
+  .about-main-content .about-vars { grid-template-columns: 1fr; }
+}
+.about-main-content .about-vars dt { font-weight: 700; }
+
+/* Notes & Sources chips */
+.about-main-content .about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+.about-main-content .about-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #fff;
+}
+
+/* Lists */
+.about-main-content .about-list { list-style: disc; padding-left: 40px; }
+
+/* Tighter term/definition layout for variable lists */
+.about-main-content .about-vars {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr); /* was 220px 1fr */
+  column-gap: 10px;                                   /* tighten spacing */
+  row-gap: 6px;
+  align-items: start;
+}
+.about-main-content .about-vars dt,
+.about-main-content .about-vars dd { margin: 0; }
+.about-main-content .about-vars dt { white-space: nowrap; }
+
+/* Optional: keep two columns on phones until it’s really narrow */
+@media (max-width: 520px) {
+  .about-main-content .about-vars {
+    grid-template-columns: 1fr; /* stack on very small screens */
+  }
+}
+
+/* Expand/Collapse hint for all collapsible sections */
+.about-main-content .about-summary {
+  position: relative;
+}
+
+.about-main-content .about-summary::after {
+  content: "  + Click to expand";
+  font-size: 0.9em;
+  font-style: italic;
+  color: #6b7280; /* muted */
+  margin-left: 8px;
+}
+
+/* When section is open, show collapse hint */
+.about-main-content .about-details[open] > .about-summary::after {
+  content: "  − Click to collapse";
+}
+
+/* Optional: chevron indicator (comment out if you want text-only) */
+.about-main-content .about-summary::before {
+  content: "▸";
+  margin-right: 8px;
+}
+.about-main-content .about-details[open] > .about-summary::before {
+  content: "▾";
+}
