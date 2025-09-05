@@ -1,9 +1,8 @@
 {{!-- templates/components/cart/page-title.html --}}
-<div class="cart-header"
-     style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;margin-bottom:1rem;">
+<div class="cart-header cart-header--fixed"
+     data-entity="{{#if customer}}{{#if customer.customer_group_id '==' 10}}quote{{else}}cart{{/if}}{{else}}quote{{/if}}">
 
-  <h1 class="page-heading" data-cart-page-title
-      style="grid-column:2;justify-self:center;text-align:center;">
+  <h1 class="page-heading cart-header__title" data-cart-page-title>
     {{#if customer}}
       {{#if customer.customer_group_id "==" 10}}
         {{lang 'cart.quote_label' quantity=cart.quantity}}
@@ -16,13 +15,12 @@
   </h1>
 
   {{#if cart.items.length}}
-    <a
-      href="#"
-      role="button"
-      class="button button--white"
-      style="grid-column:3;justify-self:end;white-space:nowrap;"
-      data-empty-entity="{{#if customer}}{{#if customer.customer_group_id '==' 10}}quote{{else}}cart{{/if}}{{else}}quote{{/if}}"
-      aria-label="{{#if customer}}{{#if customer.customer_group_id '==' 10}}Empty quote{{else}}Empty cart{{/if}}{{else}}Empty quote{{/if}}">
+    <a id="empty-cart-btn"
+       href="#"
+       role="button"
+       class="button button--white cart-header__action js-empty-cart"
+       data-empty-entity="{{#if customer}}{{#if customer.customer_group_id '==' 10}}quote{{else}}cart{{/if}}{{else}}quote{{/if}}"
+       aria-label="{{#if customer}}{{#if customer.customer_group_id '==' 10}}Empty quote{{else}}Empty cart{{/if}}{{else}}Empty quote{{/if}}">
       {{#if customer}}
         {{#if customer.customer_group_id "==" 10}}EMPTY QUOTE{{else}}EMPTY CART{{/if}}
       {{else}}
@@ -33,80 +31,160 @@
 </div>
 
 <style>
-/* Match your “white button” look, but let the theme control fonts */
-.cart-header .button.button--white {
-  background: #fff;
-  color: #000;
-  border: 1px solid currentColor;
-  border-radius: 0;       /* squared corners */
-  text-decoration: none;
+/* Full-width header: title centered, button pinned right */
+.cart-header--fixed{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 1rem;
 }
-.cart-header .button.button--white:hover { background: #f7f7f7; }
-.cart-header .button.button--white:focus { outline: 2px solid #000; outline-offset: 2px; }
-.cart-header .button.button--white[aria-busy="true"] { opacity: .65; pointer-events: none; }
+.cart-header__title{ margin: 0; text-align: center; }
+.cart-header__action{
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+/* White, square-corner style; inherit theme fonts */
+.cart-header .button.button--white{
+  background:#fff; color:#000; border:1px solid currentColor; border-radius:0; text-decoration:none;
+}
+.cart-header .button.button--white:hover{ background:#f7f7f7; }
+.cart-header .button.button--white:focus{ outline:2px solid #000; outline-offset:2px; }
+.cart-header .button.button--white[aria-busy="true"]{ opacity:.65; pointer-events:none; }
+
+/* VISUAL belt-and-suspenders: if duplicates ever sneak in, hide extras */
+.cart-header .js-empty-cart:not(:first-of-type){ display:none !important; }
+
+@media (max-width: 540px){
+  .cart-header--fixed{ flex-wrap: wrap; }
+  .cart-header__action{ position: static; transform:none; margin-left:auto; margin-top:.5rem; }
+}
 </style>
 
 <script>
-/* Delegated click handler so it survives DOM re-renders */
+/* Single init + de-dupe + sync after AJAX updates */
 (function () {
-  function getXsrfToken() {
-    var m = document.cookie.match(/(?:^|;)\s*XSRF-TOKEN=([^;]+)/);
+  if (window.__emptyCartHeaderInit) return;
+  window.__emptyCartHeaderInit = true;
+
+  function headerEl(){ return document.querySelector('.cart-header'); }
+  function titleEl(){ const h = headerEl(); return h ? h.querySelector('[data-cart-page-title]') : null; }
+  function btnEl(){ return document.querySelector('.cart-header .js-empty-cart'); }
+
+  function getEntity(){
+    const h = headerEl(); return h ? (h.getAttribute('data-entity') || 'cart').toLowerCase() : 'cart';
+  }
+
+  function getXsrfToken(){
+    const m = document.cookie.match(/(?:^|;)\s*XSRF-TOKEN=([^;]+)/);
     return m ? decodeURIComponent(m[1]) : null;
   }
 
-  async function getActiveCartId() {
+  async function fetchCart(){
     const res = await fetch('/api/storefront/carts', { credentials: 'same-origin' });
     if (!res.ok) throw new Error('Failed to load carts');
     const carts = await res.json();
-    return Array.isArray(carts) && carts.length ? carts[0].id : null;
+    return Array.isArray(carts) && carts.length ? carts[0] : null;
   }
 
-  async function deleteCart(cartId) {
+  function qtyFrom(cart){
+    if (!cart || !cart.lineItems) return 0;
+    const sum = a => (a||[]).reduce((n,i)=>n+(i.quantity||0),0);
+    const li = cart.lineItems;
+    return sum(li.physicalItems)+sum(li.digitalItems)+sum(li.customItems)+sum(li.giftCertificates);
+  }
+
+  function dedupeButtons(){
+    const btns = document.querySelectorAll('.cart-header .js-empty-cart');
+    if (btns.length > 1){
+      // keep the first, remove the rest
+      for (let i=1; i<btns.length; i++) btns[i].remove();
+    }
+  }
+
+  function updateButton(qty){
+    const btn = btnEl(); if (!btn) return;
+    const isQuote = getEntity()==='quote';
+    btn.textContent = isQuote ? 'EMPTY QUOTE' : 'EMPTY CART';
+    btn.setAttribute('aria-label', isQuote ? 'Empty quote' : 'Empty cart');
+    btn.setAttribute('data-empty-entity', isQuote ? 'quote' : 'cart');
+    // Keep layout stable even at 0 qty
+    btn.style.visibility = qty > 0 ? 'visible' : 'hidden';
+  }
+
+  function updateTitle(qty){
+    const t = titleEl(); if (!t) return;
+    const label = getEntity()==='quote' ? 'YOUR QUOTE' : 'YOUR CART';
+    t.textContent = `${label} (${qty} ${qty===1?'ITEM':'ITEMS'})`;
+  }
+
+  async function syncHeader(){
+    try{
+      dedupeButtons();
+      const cart = await fetchCart();
+      const qty = qtyFrom(cart);
+      updateTitle(qty);
+      updateButton(qty);
+    }catch(e){
+      console.warn('Cart header sync failed:', e);
+    }
+  }
+
+  async function deleteCart(cartId){
     const xsrf = getXsrfToken();
-    const res = await fetch('/api/storefront/carts/' + cartId, {
-      method: 'DELETE',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
+    const res = await fetch('/api/storefront/carts/'+cartId, {
+      method:'DELETE',
+      credentials:'same-origin',
+      headers:{
+        'Content-Type':'application/json',
+        'X-Requested-With':'XMLHttpRequest',
         'X-XSRF-Token': xsrf || '',
         'XSRF-TOKEN': xsrf || ''
       }
     });
-    if (!res.ok) throw new Error('Delete failed: ' + res.status);
+    if (!res.ok) throw new Error('Delete failed: '+res.status);
   }
 
-  document.addEventListener('click', async function (e) {
-    const link = e.target.closest('.cart-header .button.button--white[data-empty-entity]');
+  // Delegated click so it works after AJAX
+  document.addEventListener('click', async function(e){
+    const link = e.target.closest('.cart-header .js-empty-cart');
     if (!link) return;
 
     e.preventDefault();
+    const entityAttr = link.getAttribute('data-empty-entity');
+    const entity = (entityAttr || getEntity()).toLowerCase();
+    if (!confirm(entity==='quote' ? 'Remove all items from your quote?' : 'Remove all items from your cart?')) return;
 
-    const entity = (link.getAttribute('data-empty-entity') || 'cart').toLowerCase();
-    const confirmMsg = entity === 'quote'
-      ? 'Remove all items from your quote?'
-      : 'Remove all items from your cart?';
-    if (!confirm(confirmMsg)) return;
-
-    const originalText = link.textContent;
-    link.setAttribute('aria-busy', 'true');
+    const original = link.textContent;
+    link.setAttribute('aria-busy','true');
     link.textContent = 'Emptying…';
-
-    try {
-      const cartId = await getActiveCartId();
-      if (cartId) {
-        await deleteCart(cartId);
-      } else {
-        location.reload();
-        return;
-      }
+    try{
+      const cart = await fetchCart();
+      if (cart && cart.id) await deleteCart(cart.id);
       location.href = '/cart.php';
-    } catch (err) {
+    }catch(err){
       console.error(err);
-      alert('Sorry, we could not empty your ' + entity + '. Please try again.');
+      alert('Sorry, we could not empty your '+entity+'. Please try again.');
       link.removeAttribute('aria-busy');
-      link.textContent = originalText;
+      link.textContent = original;
     }
   });
+
+  // Observe the whole body so we catch any re-renders that might duplicate the header/button
+  const bodyObserver = new MutationObserver(() => { dedupeButtons(); });
+  bodyObserver.observe(document.body, { childList:true, subtree:true });
+
+  // Also watch the cart sections to update qty/title after AJAX updates
+  const targets = ['[data-cart-content]','[data-cart-totals]','[data-cart-status]']
+    .map(s=>document.querySelector(s)).filter(Boolean);
+  const cartObserver = new MutationObserver(syncHeader);
+  targets.forEach(t => cartObserver.observe(t, { childList:true, subtree:true }));
+
+  // Initial pass
+  dedupeButtons();
+  syncHeader();
 })();
 </script>
