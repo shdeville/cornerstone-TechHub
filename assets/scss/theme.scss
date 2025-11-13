@@ -2825,3 +2825,8 @@ a.button.button--white:hover {
 .about-main-content .about-details[open] > .about-summary::before {
   content: "▾";
 }
+
+/* Hide the Subtotal row on the main cart page only */
+.page-content[data-cart] .cart-totals > .cart-total:first-child {
+    display: none !important;
+}
