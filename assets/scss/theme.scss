@@ -2695,6 +2695,8 @@ a.button.button--white:hover {
     color: #000000 !important;
 }
 
+
+
 /* Data & Methodology modules (scoped to About page layout) */
 .about-main-content .about-module {
   background: #fff;
@@ -2826,7 +2828,239 @@ a.button.button--white:hover {
   content: "▾";
 }
 
+
+//Account pages styling
+
+.account {
+  padding-inline: 16px;
+  justify-content: initial;
+  justify-items: initial;
+}
+
+.account-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.account-content {        /* main column grows */
+  flex: 1 1 0;
+  min-width: 0;           /* prevents overflow + squish in flex layouts */
+  margin-right: 40px;
+}
+
+.account-sidebar {        /* fixed-ish sidebar */
+  flex: 0 0 350px;        /* adjust width as you like */
+}
+
+.account-content--fixedSmall {
+  max-width: none !important;
+  width: auto;
+}
+
+@media (max-width: 900px) {
+  .account-body {
+    flex-direction: column;
+  }
+}
+
+/* Only this instance */
+.account-body .account-product-download.button.button--primary {
+  /* stop overlay behavior */
+  position: static !important;
+  inset: auto !important;
+  z-index: auto !important;
+
+  /* normal button block */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* size: keep a solid height without forcing width */
+  min-height: 40px;        /* replaces the fixed 40px height */
+  padding: 0.5rem .5rem;    /* adjust to taste */
+  line-height: 1;          /* prevents “skinny” look from a tiny line-height */
+  width: auto;
+
+  /* visuals */
+  background-color: #500000;
+  color: #fff !important;
+  border: none;
+  border-radius: 0;        /* no rounding */
+  text-decoration: none;
+  cursor: pointer;
+
+  /* spacing from the image */
+  margin-top: 0.75rem;
+  margin-bottom: 0px;
+  box-sizing: border-box;
+  
+  gap: 0.3rem;                    /* space between icon and label */
+}
+
+.account-product-figure::after{
+    content: none !important;
+}
+
+/* Make the sr-only text visible only on the download button */
+.account-body .account-product-download.button.button--primary .is-srOnly {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  white-space: nowrap;            /* keeps label on one line */
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: visible !important;
+  color: #fff !important;         /* match button color */
+  text-indent: 0 !important;      /* guard against any hidden-text pattern */
+  font-size: 12px;
+}
+
+.account-body .account-product-download.button.button--primary .icon{
+    margin-top: 0px;
+}
+
+
+
 /* Hide the Subtotal row on the main cart page only */
 .page-content[data-cart] .cart-totals > .cart-total:first-child {
     display: none !important;
+}
+
+
+
+
+
+/* --------------------------------------------------
+   CART SAVINGS WIDGET — FINAL VERSION
+   -------------------------------------------------- */
+
+/* Container that holds “You Saved” + totals (desktop only) */
+.techhub-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* --------------------------------------
+   YOU SAVED BOX (HIDDEN BY DEFAULT)
+   -------------------------------------- */
+.techhub-you-saved-box {
+    display: none;                 /* Prevent FOUC / initial flash */
+    max-width: 860px;
+    background: #f6f6f6;
+    border: 1px solid #f6f6f6;
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    /* Base font size for body text (16px) */
+    font-size: 16px;
+}
+
+/* Title text – with check icon */
+.techhub-you-saved-title {
+    font-family: 'Open Sans', sans-serif !important;
+    display: inline-flex;          /* key: keep it inline but flex */
+    align-items: center;
+    gap: 8px;                      /* space between ✔ and text */
+    font-weight: 700;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin: 0 0 0.5rem;
+    color: #389F5A;                /* Utilities/Success */
+}
+
+.techhub-check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;      /* in case you prefer margin over gap */
+}
+
+.techhub-check-icon svg {
+    display: block;         /* already have this */
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Force the checkmark to stay green even if global SVG styles exist */
+.techhub-check-icon svg path {
+    fill: #389F5A !important;
+}
+
+/* Body text – match Figma body:
+   Open Sans, 400, 16px,  black */
+.techhub-you-saved-body {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.8 !important;        
+    color: #000000;        /* Secondary Colors/Black */
+    margin: 0;
+}
+
+/* Hyperlink inside body (keeping your maroon brand choice) */
+.techhub-savings-link {
+    color: #500000;                  /* TAMU Maroon */
+    font-weight: 600;                /* Slight emphasis */
+    text-decoration: underline;
+}
+
+.techhub-savings-link:hover,
+.techhub-savings-link:focus {
+    color: #7a0000;                  /* darker hover state */
+    text-decoration: underline;
+}
+
+/* When JS determines savings > 0 */
+.techhub-you-saved-box.techhub-visible {
+    display: block;     /* Show the widget */
+}
+
+
+/* --------------------------------------
+   RIGHT SIDE (totals + checkout button)
+   -------------------------------------- */
+.techhub-summary-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Allow totals, actions to span full width */
+.techhub-summary-right > [data-cart-totals],
+.techhub-summary-right > .cart-actions,
+.techhub-summary-right > .cart-additionalCheckoutButtons {
+    width: 100%;
+}
+
+/* --------------------------------------
+   MOBILE (≤ 800px): hide widget ALWAYS
+   -------------------------------------- */
+@media (max-width: 800px) {
+
+    .techhub-summary-row {
+        display: block;
+    }
+
+    /* Even if techhub-visible is added, hide on mobile */
+    .techhub-you-saved-box,
+    .techhub-you-saved-box.techhub-visible {
+        display: none !important;
+    }
+
+    .techhub-summary-right {
+        align-items: stretch;
+    }
 }
