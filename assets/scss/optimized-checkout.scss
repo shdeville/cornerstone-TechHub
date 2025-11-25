@@ -458,3 +458,11 @@ div[data-test="cart-taxes"] {
 p[data-test="order-confirmation-order-status-text"] {
     display: none;
 }
+
+
+//disable the "save address" checkbox field
+#shippingAddress\.shouldSaveAddress,
+label[for="shippingAddress.shouldSaveAddress"] {
+    display: none !important;
+}
+ 

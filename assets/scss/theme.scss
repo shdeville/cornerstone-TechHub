@@ -3064,3 +3064,8 @@ a.button.button--white:hover {
         align-items: stretch;
     }
 }
+
+//disable addresses section of the account page entirely
+.navBar-item:has(a[href="/account.php?action=address_book"]) {
+    display: none !important;
+}
