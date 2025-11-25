@@ -465,4 +465,8 @@ p[data-test="order-confirmation-order-status-text"] {
 label[for="shippingAddress.shouldSaveAddress"] {
     display: none !important;
 }
- 
+
+#shouldSaveAddress,
+label[for="shouldSaveAddress"] {
+    display: none !important;
+}
