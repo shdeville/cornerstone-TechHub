@@ -2822,3 +2822,149 @@ a.button.button--white:hover {
 .about-main-content .about-details[open] > .about-summary::before {
   content: "▾";
 }
+
+
+/* Hide the Subtotal row on the main cart page only */
+.page-content[data-cart] .cart-totals > .cart-total:first-child {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------
+   CART SAVINGS WIDGET — FINAL VERSION
+   -------------------------------------------------- */
+
+/* Container that holds “You Saved” + totals (desktop only) */
+.techhub-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* --------------------------------------
+   YOU SAVED BOX (HIDDEN BY DEFAULT)
+   -------------------------------------- */
+.techhub-you-saved-box {
+    display: none;                 /* Prevent FOUC / initial flash */
+    max-width: 860px;
+    background: #f6f6f6;
+    border: 1px solid #f6f6f6;
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    /* Base font size for body text (16px) */
+    font-size: 16px;
+}
+
+/* Title text – with check icon */
+.techhub-you-saved-title {
+    font-family: 'Open Sans', sans-serif !important;
+    display: inline-flex;          /* key: keep it inline but flex */
+    align-items: center;
+    gap: 8px;                      /* space between ✔ and text */
+    font-weight: 700;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin: 0 0 0.5rem;
+    color: #389F5A;                /* Utilities/Success */
+}
+
+.techhub-check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;      /* in case you prefer margin over gap */
+}
+
+.techhub-check-icon svg {
+    display: block;         /* already have this */
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Force the checkmark to stay green even if global SVG styles exist */
+.techhub-check-icon svg path {
+    fill: #389F5A !important;
+}
+
+/* Body text – match Figma body:
+   Open Sans, 400, 16px,  black */
+.techhub-you-saved-body {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.8 !important;        
+    color: #000000;        /* Secondary Colors/Black */
+    margin: 0;
+}
+
+/* Hyperlink inside body (keeping your maroon brand choice) */
+.techhub-savings-link {
+    color: #500000;                  /* TAMU Maroon */
+    font-weight: 600;                /* Slight emphasis */
+    text-decoration: underline;
+}
+
+.techhub-savings-link:hover,
+.techhub-savings-link:focus {
+    color: #7a0000;                  /* darker hover state */
+    text-decoration: underline;
+}
+
+/* When JS determines savings > 0 */
+.techhub-you-saved-box.techhub-visible {
+    display: block;     /* Show the widget */
+}
+
+
+/* --------------------------------------
+   RIGHT SIDE (totals + checkout button)
+   -------------------------------------- */
+.techhub-summary-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Allow totals, actions to span full width */
+.techhub-summary-right > [data-cart-totals],
+.techhub-summary-right > .cart-actions,
+.techhub-summary-right > .cart-additionalCheckoutButtons {
+    width: 100%;
+}
+
+/* --------------------------------------
+   MOBILE (≤ 800px): hide widget ALWAYS
+   -------------------------------------- */
+@media (max-width: 800px) {
+
+    .techhub-summary-row {
+        display: block;
+    }
+
+    /* Even if techhub-visible is added, hide on mobile */
+    .techhub-you-saved-box,
+    .techhub-you-saved-box.techhub-visible {
+        display: none !important;
+    }
+
+    .techhub-summary-right {
+        align-items: stretch;
+    }
+}

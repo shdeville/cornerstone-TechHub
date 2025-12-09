@@ -18,72 +18,110 @@ cart: true
         {{#if cart.items.length}}
             <div class="loadingOverlay"></div>
 
+            <!-- LINE ITEMS -->
             <div data-cart-content class="cart-content-padding-right">
                 {{> components/cart/content}}
             </div>
 
-            <div data-cart-totals class="cart-content-padding-right">
-                {{> components/cart/totals}}
-            </div>
+            <!-- SUMMARY ROW: YOU SAVED (LEFT) + TOTALS & ACTIONS (RIGHT) -->
+            <div class="techhub-summary-row cart-content-padding-right">
 
-            {{{region name="cart_below_totals"}}}
+                {{!-- YOU SAVED BOX (LEFT) — LOGGED-IN USERS ONLY --}}
+                {{#if customer}}
+                    <div class="techhub-you-saved-box" id="techhub-you-saved-box">
+                        <div class="techhub-you-saved-title" id="techhub-you-saved-title">
+                            <span class="techhub-check-icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 1.875C12.1549 1.875 14.2215 2.73102 15.7452 4.25476C17.269 5.77849 18.125 7.84512 18.125 10C18.125 12.1549 17.269 14.2215 15.7452 15.7452C14.2215 17.269 12.1549 18.125 10 18.125C7.84512 18.125 5.77849 17.269 4.25476 15.7452C2.73102 14.2215 1.875 12.1549 1.875 10C1.875 7.84512 2.73102 5.77849 4.25476 4.25476C5.77849 2.73102 7.84512 1.875 10 1.875ZM10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 7.34784 18.9464 4.8043 17.0711 2.92893C15.1957 1.05357 12.6522 0 10 0C7.34784 0 4.8043 1.05357 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C4.8043 18.9464 7.34784 20 10 20ZM14.4141 8.16406C14.7812 7.79688 14.7812 7.20313 14.4141 6.83984C14.0469 6.47656 13.4531 6.47266 13.0898 6.83984L8.75391 11.1758L6.91797 9.33984C6.55078 8.97266 5.95703 8.97266 5.59375 9.33984C5.23047 9.70703 5.22656 10.3008 5.59375 10.6641L8.09375 13.1641C8.46094 13.5312 9.05469 13.5312 9.41797 13.1641L14.4141 8.16406Z" fill="#389F5A"/>
+                                </svg>
+                            </span>
+                            YOU SAVED AN ESTIMATED
+                            <span id="techhub-you-saved-amount"> $0.00</span>
+                        </div>
 
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{#if cart.show_primary_checkout_button}}
-                    <div class="cart-actions cart-content-padding-right">
-                        {{#if customer}}
-                        
-                            {{#if customer.customer_group_id '==' '10'}}
-                                <!--code for quote button-->
-                                <div id="quote_button">
-                                    <button class="button button--primary" id="generate-quote">Save Quote as PDF</button>
-                                </div>
-                            {{else}}
-                                <div class='checkout_container'>
-                        <a
-                            class="button button--primary"
-                                        id="checkout-button"
-                            href="{{urls.checkout.single_address}}"
-                            title="{{lang 'cart.checkout.title'}}"
-                            data-primary-checkout-now-action
-                        >
-                            {{lang 'cart.checkout.button'}}
-                        </a>
-                                    
-                                    <!--Link to save quote beneath checkout button-->
-                                    <div id="quote_fake_link">
-                                        <a tabindex="0" class="fake-link" id="generate-quote">Save Cart as PDF</a>
+                        <p class="techhub-you-saved-body">
+                            TechHub calculates your savings by comparing against competitor pricing in AggieBuy and
+                            retail pricing.</br>Learn more
+                            <a class="techhub-savings-link" href="https://tamu.mybigcommerce.com/data-and-methodology/#:~:text=COST%20AVOIDANCE-,STANDARD%20TECHHUB%20SAVINGS,-Summary" target="_blank" rel="noopener">here</a>.
+                        </p>
+                    </div>
+                {{/if}}
+
+                <!-- TOTALS + CHECKOUT (RIGHT) -->
+                <div class="techhub-summary-right">
+
+                    <div data-cart-totals class="cart-content-padding-right">
+                        {{> components/cart/totals}}
+                    </div>
+
+                    {{{region name="cart_below_totals"}}}
+
+                    {{#or customer (unless settings.hide_price_from_guests)}}
+                        {{#if cart.show_primary_checkout_button}}
+                            <div class="cart-actions cart-content-padding-right">
+                                {{#if customer}}
+
+                                    {{#if customer.customer_group_id '==' '10'}}
+                                        <!-- code for quote button -->
+                                        <div id="quote_button">
+                                            <button class="button button--primary" id="generate-quote">Save Quote as PDF</button>
+                                        </div>
+                                    {{else}}
+                                        <div class="checkout_container">
+                                            <a
+                                                class="button button--primary"
+                                                id="checkout-button"
+                                                href="{{urls.checkout.single_address}}"
+                                                title="{{lang 'cart.checkout.title'}}"
+                                                data-primary-checkout-now-action
+                                            >
+                                                {{lang 'cart.checkout.button'}}
+                                            </a>
+
+                                            <!-- Link to save quote beneath checkout button -->
+                                            <div id="quote_fake_link">
+                                                <a tabindex="0" class="fake-link" id="generate-quote">Save Cart as PDF</a>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+
+                                {{else}}
+                                    <!-- code for quote button (guest) -->
+                                    <div id="quote_button">
+                                        <button class="button button--primary" id="generate-quote">Save Quote as PDF</button>
                                     </div>
-                                </div>
-                            {{/if}}
+                                {{/if}}
+
+                                {{#if cart.show_multiple_address_shipping}}
+                                    <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
+                                        {{lang 'cart.preview.checkout_multiple'}}
+                                    </a>
+                                {{/if}}
+                            </div>
                         {{else}}
-                            <!--code for quote button-->
-                            <div id="quote_button">
-                                <button class="button button--primary" id="generate-quote">Save Quote as PDF</button>
+                            <div class="cart-actions cart-content-padding-right">
+                                <a class="button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">
+                                    {{lang 'cart.continue_shopping'}}
+                                </a>
                             </div>
                         {{/if}}
-                        {{#if cart.show_multiple_address_shipping}}
-                            <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
-                                {{lang 'cart.preview.checkout_multiple'}}
-                            </a>
-                        {{/if}}
-                    </div>
-                {{else}}
-                    <div class="cart-actions cart-content-padding-right">
-                        <a class="button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">{{lang 'cart.continue_shopping'}}</a>
-                    </div>
-                {{/if}}
 
-                {{#if cart.additional_checkout_buttons}}
-                    <div data-cart-additional-checkout-buttons class="cart-additionalCheckoutButtons cart-content-padding-right">
-                        {{> components/cart/additional-checkout-buttons}}
-                    </div>
-                {{/if}}
-            {{else}}
-                <div class="cart-actions cart-content-padding-right">
-                    <a class="button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">{{lang 'cart.login_to_checkout'}}</a>
-                </div>
-            {{/or}}
+                        {{#if cart.additional_checkout_buttons}}
+                            <div data-cart-additional-checkout-buttons class="cart-additionalCheckoutButtons cart-content-padding-right">
+                                {{> components/cart/additional-checkout-buttons}}
+                            </div>
+                        {{/if}}
+                    {{else}}
+                        <div class="cart-actions cart-content-padding-right">
+                            <a class="button" href="{{urls.auth.login}}" title="{{lang 'cart.login_to_checkout'}}">
+                                {{lang 'cart.login_to_checkout'}}
+                            </a>
+                        </div>
+                    {{/or}}
+
+                </div><!-- /.techhub-summary-right -->
+
+            </div><!-- /.techhub-summary-row -->
 
         {{else}}
             {{#if customer}}
