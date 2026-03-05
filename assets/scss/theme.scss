@@ -3068,4 +3068,9 @@ a.button.button--white:hover {
 //disable addresses section of the account page entirely
 .navBar-item:has(a[href="/account.php?action=address_book"]) {
     display: none !important;
+
+//disable the "address" section under "account" in mobile menu view
+#navPages-account a[href*="address_book"] {
+    display: none !important;
+}
 }
