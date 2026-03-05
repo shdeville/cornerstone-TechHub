@@ -2968,3 +2968,8 @@ a.button.button--white:hover {
         align-items: stretch;
     }
 }
+
+//disable the "address" section under "account" in mobile menu view
+#navPages-account a[href*="address_book"] {
+    display: none !important;
+}
