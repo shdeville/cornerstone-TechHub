@@ -2978,3 +2978,35 @@ a.button.button--white:hover {
 #navPages-account a[href*="address_book"] {
     display: none !important;
 }
+
+
+//removes the padding under add to cart/quote button on product page
+.productView-details.product-options {
+    padding-bottom: 0px;
+}
+
+//decreases the padding under divider under product quick specs on product page
+
+.productView-details.product-data {
+    padding-bottom: 5px;
+}
+
+//removes border between two top sections on on product page
+.productView-details.product-data .productView-product {
+    border-bottom: 0;
+}
+
+//removes the margin under add to cart/quote button on product page
+.productView-details.product-options .productView-options {
+    margin-bottom: 0;
+}
+
+
+/* Product page tabs: selected tab background */
+.productView-description .tab.is-active .tab-title {
+    background-color: #e5e5e5; /* swap to your preferred grey */
+}
+
+.productView-description .tab .tab-title {
+    background-color: #ffffff;
+}
