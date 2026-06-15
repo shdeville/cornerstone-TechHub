@@ -99,6 +99,14 @@
             </div>
         </div>
 
+        <div class="InvoiceRecipientInfo" id="invoice-recipient-info" style="display: none; margin: 20px 0 24px 0;">
+            <h2 class="InvoiceHeading" style="margin-bottom: 10px;">Additional Checkout Information</h2>
+            <div class="DetailRow" style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                <div class="Label" style="font-weight: bold; width: 180px;">Recipient UIN(s) or Name(s):</div>
+                <div class="Value" id="invoice-recipient-uin"></div>
+            </div>
+        </div>
+
         <div class="InvoiceItems">
             <h2 class="InvoiceHeading">{{lang 'invoice.order_items'}}</h2>
             <table class="InvoiceTable">
@@ -204,7 +212,71 @@
         </div>
     </div>
     <script>
-        window.print();
+    (function () {
+        var orderId = '{{order.id}}';
+
+        function printInvoice() {
+            window.print();
+        }
+
+        if (!orderId) {
+            printInvoice();
+            return;
+        }
+
+        fetch('/api/storefront/orders/' + orderId, {
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Order lookup failed: ' + response.status);
+                }
+
+                return response.json();
+            })
+            .then(function (order) {
+                var billingFields = order.billingAddress && order.billingAddress.customFields
+                    ? order.billingAddress.customFields
+                    : [];
+
+                var shippingFields = order.consignments && order.consignments.shipping
+                    ? order.consignments.shipping.reduce(function (fields, consignment) {
+                        return fields.concat(consignment.customFields || []);
+                    }, [])
+                    : [];
+
+                var recipientField =
+                    billingFields.find(function (field) {
+                        return field.fieldId === 'field_52';
+                    }) ||
+                    shippingFields.find(function (field) {
+                        return field.name === 'Recipient UIN(s) or Name(s) (comma separated)';
+                    });
+
+                if (recipientField) {
+                    var recipientValue = recipientField.fieldValue || recipientField.value;
+
+                    if (recipientValue) {
+                        var section = document.getElementById('invoice-recipient-info');
+                        var valueEl = document.getElementById('invoice-recipient-uin');
+
+                        if (section && valueEl) {
+                            valueEl.textContent = recipientValue;
+                            section.style.display = '';
+                        }
+                    }
+                }
+
+                printInvoice();
+            })
+            .catch(function (error) {
+                console.error('Unable to load invoice recipient field:', error);
+                printInvoice();
+            });
+    })();
     </script>
 {{/partial}}
 {{> layout/empty}}
