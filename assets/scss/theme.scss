@@ -735,8 +735,8 @@
     }
     
     
-    li.navBar-item:has(a[href="/account.php?action=account_details"]) {
-        display: none; /* removes the account settings tab under account tab  */
+    li.navBar-item:has(a[href*="account.php?action=account_details"]) {
+        display: none !important; /* removes the account settings tab under account tab */
     }
     
     
@@ -2969,8 +2969,8 @@ a.button.button--white:hover {
     }
 }
 
-//disable addresses section of the account page entirely
-.navBar-item:has(a[href="/account.php?action=address_book"]) {
+// Disable Addresses section of the account page nav
+.navBar-item:has(a[href*="account.php?action=address_book"]) {
     display: none !important;
 }
 
@@ -2978,6 +2978,13 @@ a.button.button--white:hover {
 #navPages-account a[href*="address_book"] {
     display: none !important;
 }
+
+
+
+
+
+
+
 
 
 //removes the padding under add to cart/quote button on product page
